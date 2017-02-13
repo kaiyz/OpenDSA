@@ -71,10 +71,18 @@ class extrtoolembed(Directive):
 
   def run(self):
     """ Restructured text extension for inserting embedded external learning tools """
+    if 'long_name' not in self.options or self.options['long_name'] = '' :
+        print 'ERROR: External learning tool is not properly configured'
+        sys.exit()
+
+    if 'learning_tool' not in self.options or self.options['learning_tool'] = '' :
+        print 'ERROR: External learning tool is not properly configured'
+        sys.exit()
+
     self.options['type'] = 'external_tool'
 
     url_params = {}
-    url_params['resourse_name'] = self.options['long_name']
+    url_params['resource_name'] = self.options['long_name']
 
     self.options['content'] = ''
     self.options['exer_name'] = self.options['long_name'].replace(" ", "_")
@@ -89,6 +97,7 @@ class extrtoolembed(Directive):
     res = CONTAINER_HTML % (self.options)
 
     return [nodes.raw('', res, format='html')]
+
 
 
 source = """\
