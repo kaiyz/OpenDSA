@@ -1,4 +1,4 @@
-﻿.. _Client-sideFramework:
+.. _Client-sideFramework:
 
 .. raw:: html
 
@@ -72,7 +72,8 @@ The client-side framework is responsible for:
 
 * Collecting and transmitting user interaction data to the backend server
 
-* Dynamically configuring the natural language, code language, and default parameters of AVs at runtime
+* Dynamically configuring the natural language, code language, and
+  default parameters of AVs at runtime
 
 All but the last two of these responsibilities are handled by
 ``odsaMOD.js``, effectively making module pages the "brains" of the
@@ -428,7 +429,6 @@ Exercises
 Each module page creates an ``exercises`` object on page load which is used to quickly and easily access important information about the module's exercises.  Each exercise object in ``exercises`` includes:
 
 * Points - the number of points the exercise is worth
-* Required - whether or not the exercise is required for module proficiency
 * Threshold - the minimum score a user must receive to obtain proficiency
 * Type - the type of exercise
 
@@ -445,76 +445,24 @@ Example of ``exercises``
   {
     "shellsortCON1": {
       "points": 0.1,
-      "required": true,
       "threshold": 1.0,
       "type": ss,
       "uiid": 1362467525562
     },
     "ShellsortProficiency": {
       "points": 1.1,
-      "required": true,
       "threshold": 0.9,
       "type": pe,
       "uiid": 1362467577655
     }
   }
 
-Score Data
-==========
+Event Messages Transmitted to the Server
+========================================
 
-* When a user completes an exercise, a score object is generated and saved to local storage using a key of the form: 'score-[timestamp]-[random_number]'.  The 'score' prefix identifies the object as score data, while the timestamp helps make the key unique and allows the framework to quickly determine whether the associated score data was recorded prior to the timestamp taken when the send function was called.  The random number ensures that if two events are logged at the exact same time they will not overwrite each other.  While possible, the probability of two events being logged at the exact same time and having the same random number is negligible.
-* The OpenDSA framework will attempt to send the score to the server immediately.  If the score was sent successfully or was rejected by the server, the object is removed from local storage.  In the case of rejection, the data is removed to prevent a build up of bad data that will never succeed and be cleared.  If transmission is unsuccessful for another reason, the score object will remain in local storage and the framework will attempt to send it again in the future or when the user clicks the 'Resubmit' button associated with an exercise.
-* If no user is logged in, score data will still be cached, but not sent to the server.  When a user logs in, all anonymous score data is awarded to that user (if OpenDSA is configured to do so).
-* Each score data object contains the following fields:
-
-  * exercise - the name of the exercise with which the score is associated
-  * book - the identifier of the book with which the event is associated
-  * module - the module the event is associated with
-  * score - the user's score for the exercise
-  * steps_fixed - the number of steps fixed during the exercise
-  * submit_time - the timestamp of when the user finished the exercise
-  * total_time - the total amount of time the user spent working on the exercise
-  * uiid - the unique instance identifier which allows an event to be tied to a specific instance of an exercise or a specific load of a module page
-  * username - the username of the user who earned the score
-
-Example:
-
-.. code-block:: javascript
-
-  localStorage["score-1377743343193-24"] = '{"exercise":"SelsortCON1","module":"SelectionSort","score":1,"steps_fixed":0,"submit_time":1360269557116,"total_time":2559,"uiid":1360269543543,"book":"d48f23e5ea5e9124cea87971036f818ca74428e8","username":"breakid"}'
-
-Proficiency Data
-================
-
-The proficiency status of each completed exercise and module is stored in local storage using a key of the form: 'prof-[username]-[bookID]-[module_or_exercise_name]'.  The prefix 'prof' identifies the data as cached proficiency data, while the username, bookID, and module / exercise name identifies what the status is related to.
-
-Example:
-
-.. code-block:: javascript
-
-  localStorage["prof-testuser-d8a4a0d9967b6722a417e411bf13f9b99005c851-IntroDSA"] = "STORED"
-
-Interaction / Event Data
-========================
-
-* User interaction data is stored in local storage as an object with the following fields:
-
-  * av - the name of the exercise with which the event is associated ("" if it is a module-level event)
-  * book - the identifier of the book with which the event is associated
-  * desc - a stringified JSON object containing additional event-specific information
-  * module - the module the event is associated with
-  * tstamp - a timestamp when the event occurred
-  * type - the type of event
-  * uiid - the unique instance identifier which allows an event to be tied to a specific instance of an exercise or a specific load of a module page
-  * user - the username of the user who generated the event
-
-Event data is stored using a key of the form: 'event-[timestamp]-[random_number]'.  The 'event' prefix identifies the object as user interaction data, while the timestamp helps make the key unique and allows the framework to quickly determine whether the associated event occurred prior to the timestamp taken when the send function was called.  The random number ensures that if two events are logged at the exact same time they will not overwrite each other.  While possible, the probability of two events being logged at the exact same time and having the same random number is negligible.
-
-Example:
-
-.. code-block:: javascript
-
-  localStorage["event-1377743343193-8"] = '{"type":"document-ready","desc":"{\"msg\":\"User loaded the shellsortAV AV\"}","av":"shellsortAV","uiid":1377743340937,"module":"Shellsort","user":"breakid","book":"d48f23e5ea5e9124cea87971036f818ca74428e8","tstamp":1377743343193}'
+For details about event messages and their format that are transmitted
+by the client-side framework to the server, see
+:ref:`Event Messages <EventMessages>`.
 
 ----------------------------
 Implementation and Operation

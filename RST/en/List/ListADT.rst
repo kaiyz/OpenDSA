@@ -3,7 +3,7 @@
 .. Copyright (c) 2012-2016 by the OpenDSA Project Contributors, and
 .. distributed under an MIT open source license.
 
-.. avmetadata:: 
+.. avmetadata::
    :author: Cliff Shaffer
    :requires: ADT
    :satisfies: list ADT
@@ -63,7 +63,7 @@ positions 0 through :math:`n-1` as
 :math:`\langle\ a_0,\ a_1,\ ...,\ a_{n-1}\ \rangle`.
 The subscript indicates an element's position within the list.
 Using this notation, the empty list would appear as
-:math:`\langle\ \rangle`. 
+:math:`\langle\ \rangle`.
 
 
 Defining the ADT
@@ -129,7 +129,8 @@ object, sometimes referred to as an :term:`iterator`.
 |
 
 .. inlineav:: listADTposCON ss
-   :output: show  
+   :long_name: List ADT Positions Slideshow
+   :output: show
 
 The ``List`` member functions allow you to build a list with elements
 in any desired order, and to access any desired position in the list.
@@ -183,6 +184,11 @@ There are two standard approaches to implementing lists, the
 :ref:`array-based list <ListArray>`, and the
 :ref:`linked list <linked list> <ListLinked>`.
 
+
+List ADT Programming Exercise
+-----------------------------
+
+.. extrtoolembed:: 'List ADT Programming Exercise'
 
 .. TODO::
    :tag: Exercise

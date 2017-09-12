@@ -4,10 +4,10 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Cliff Shaffer
-   :requires: sorting terminology; sort code tuning; insertion sort
-   :satisfies: quicksort
-   :topic: Sorting
+    :author: Cliff Shaffer
+    :requires: sorting terminology; sort code tuning; insertion sort
+    :satisfies: quicksort
+    :topic: Sorting
 
 .. odsalink:: AV/Sorting/quicksortCON.css
 .. odsalink:: AV/Development/QuickSortPartitionAnalysisCON.css
@@ -30,7 +30,7 @@ Quicksort Partition Slideshow
 -----------------------------
 
 .. inlineav:: quicksortCON ss
-
+   :output: show
 
 Quicksort Partition Proficiency Exercise
 ----------------------------------------
@@ -39,10 +39,10 @@ Quicksort Partition Proficiency Exercise
 
 
 Quicksort Partition Analysis Slideshow
-----------------------------------------
+--------------------------------------
 
 .. inlineav:: QuickSortPartitionAnalysisCON ss
-
+   :output: show
 
 Quicksort Visualization
 -----------------------
@@ -60,19 +60,19 @@ Quicksort Worst Case Analysis Slideshow
 ---------------------------------------
 
 .. inlineav:: QuickSortWorstCaseCON ss
-
+   :output: show
 
 Quicksort Best Case Analysis Slideshow
 --------------------------------------
 
 .. inlineav:: QuickSortBestCaseCON ss
-
+   :output: show
 
 Quicksort Average Case Analysis Slideshow
 -----------------------------------------
 
 .. inlineav:: QuickSortAverageCaseCON ss
-
+   :output: show
 
 Quicksort Summary Exercise
 --------------------------

@@ -52,7 +52,7 @@
         "sections": {}
       }
     },
-    "Introduction": {
+    "Introduction for Data Structures and Algorithms Courses": {
       "Background/IntroDSA": {
         "long_name": "Introduction to Data Structures and Algorithms",
         "sections": {
@@ -181,73 +181,148 @@
         }
       }
     },
-    "Pointers": {
-      "Pointers/PointerIntro": {
+    "Introduction to Pointers in Java": {
+      "PointersJava/PointerIntro": {
         "long_name": "Pointers Chapter Introduction",
         "sections": {}
       },
-      "Pointers/BasicPointers": {
-        "long_name": "Basic Pointers",
+      "PointersJava/BasicPointers": {
+        "long_name": "Basic References",
         "sections": {
-          "What is a pointer?": {},
-          "Pointer Reference and Dereference": {},
-          "Pointer Assignment": {},
-          "Bad Pointers": {},
-          "Syntax": {},
-          "Example Pointer Code": {},
-          "Pointer Rules Summary": {},
-          "How Do Pointers Work In Java?": {},
-          "How Are Pointers Implemented In The Machine?": {},
-          "The Term 'Reference'": {},
-          "Why Are Bad Pointer Bugs So Common?": {}
+          "Pointers and References": {
+            "num42CON": {},
+            "employeeEmpRefCON": {}
+          },
+          "Referencing and Dereferencing": {
+            "empRefnullCON": {}
+          },
+          "The Employee Class": {},
+          "Reference Assignments": {
+            "empRefsecondCON": {},
+            "PointerEX1PRO": {
+              "long_name": "Pointer Exercise 1",
+              "required": true,
+              "points": 1.0,
+              "threshold": 1
+            }
+          },
+          "Shallow and Deep Copying": {
+            "shallowdeepCON": {},
+            "PointerEX2PRO": {
+              "long_name": "Pointer Exercise 2",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
+          },
+          "Bad References": {
+            "empPtrxxxCON": {},
+            "badPointerPowCON": {}
+          },
+          "Syntax": {
+            "employeePtr2CON": {
+              "long_name": "employeePtr2CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "examplePointerCodeCON": {
+              "long_name": "examplePointerCodeCON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Reference Rules Summary": {
+            "memoryModelCON": {}
+          }
         }
       },
-      "Pointers/LocalMem": {
+      "PointersJava/LocalMem": {
         "long_name": "Local Memory",
         "sections": {
-          "Thanks For The Memory: Allocation and Deallocation": {},
-          "Local Memory": {},
-          "Examples": {},
+          "Thanks For The Memory: Allocation and Deallocation": {
+            "simpleLifetimeCON": {
+              "long_name": "simpleLifetimeCON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "T1-T5CON": {
+              "long_name": "T1-T5CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
           "Local Parameters": {},
           "How Does The Function Call Stack Work?": {}
         }
       },
-      "Pointers/RefParam": {
-        "long_name": "Reference Parameters",
-        "sections": {
-          "Reference Parameters": {},
-          "Passing By Reference": {},
-          "Simple Reference Parameter Example: Swap()": {},
-          "More Syntax": {},
-          "Reference Parameter Summary": {},
-          "Reference Parameters in Java": {},
-          "Reference Parameters in C++": {}
-        }
-      },
-      "Pointers/HeapMem": {
+      "PointersJava/HeapMem": {
         "long_name": "Heap Memory",
         "sections": {
-          "Heap Memory": {},
-          "What Does The Heap Look Like?": {},
-          "Programming The Heap": {},
-          "C Specifics": {},
-          "Simple Heap Example": {},
-          "Simple Heap Observations": {},
-          "Heap Array": {},
-          "Heap String Example": {},
-          "Memory Leaks": {},
-          "Ownership": {},
-          "Heap Memory Summary": {}
+          "Heap Memory and Garbage Collection":{
+            "garbageDisposalCON": {
+              "long_name": "garbageDisposalCON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "What Does The Heap Look Like?": {
+            "LocalHeapaloc": {},
+            "LocalHeapdealoc": {},
+            "LocalHeapintptr42": {
+              "long_name": "LocalHeapintptr42",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          },
+          "Arrays": {}
         }
       },
-      "Pointers/Exercises": {
-        "long_name": "Exercises",
+      "PointersJava/Links": {
+        "long_name": "Link Nodes",
         "sections": {
-          "FindNodePROG Pointer Programming Exercise": {
-            "learning_tool": "code-workout",
-            "resource_type": "external_assignment",
-            "resource_name": "",
-            "points": 1.0
+          "Link Nodes": {
+            "linkNodes1CON": {
+              "long_name": "linkNodes1CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linkNodes2CON": {
+              "long_name": "linkNodes2CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linkNodes3CON": {
+              "long_name": "linkNodes3CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linkNodes4CON": {
+              "long_name": "linkNodes4CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "linkNodes5CON": {
+              "long_name": "linkNodes5CON",
+              "required": false,
+              "points": 0.0,
+              "threshold": 1.0
+            },
+            "PointerEX3PRO": {
+              "long_name": "Pointer Exercise 3",
+              "required": true,
+              "points": 1,
+              "threshold": 1
+            }
           }
         }
       }
@@ -1126,6 +1201,7 @@
       "RecurTutor/CodeCompletionEx": {
         "long_name": "Code Completion Exercises",
         "sections": {
+          "Introduction": {},
           "Recursion Programming Exercise: Largest": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
@@ -1463,8 +1539,8 @@
             }
           },
           "Implementation": {
-            "btTravInorderPRO": {
-              "long_name": "Binary Tree Inorder Traversal Exercise",
+            "btTravPreorderPRO": {
+              "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
@@ -1484,9 +1560,9 @@
               "threshold": 0.90
             }
           },
-          "Preorder Traversal Practice": {
-            "btTravPreorderPRO": {
-              "long_name": "Binary Tree Preorder Traversal Exercise",
+          "Inorder Traversal Practice": {
+            "btTravInorderPRO": {
+              "long_name": "Binary Tree Inorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
@@ -1722,7 +1798,6 @@
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "sections": {
-          "Practice Exercises": {},
           "Mirror Image Binary Trees Exercise": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
@@ -4586,26 +4661,42 @@
     },
     "Spatial Data Structures": {
       "Spatial/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "sections": {}
-      },
+        "long_name": "Spatial Data Structures", 
+        "sections": {
+          "Spatial Data Structures": {}
+        }
+      }, 
       "Spatial/PRquadtree": {
-        "long_name": "PR QUadtrees",
-        "sections": {}
-      },
+        "long_name": "The PR Quadtree", 
+        "sections": {
+          "The PR Quadtree": {
+            "PRquadtreeAV": {
+              "long_name": "PRquadtreeAV", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }, 
+            "PRquadtree2ptAV": {
+              "long_name": "PRquadtree2ptAV", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }, 
+            "PRquadtreeInter": {
+              "long_name": "PRquadtreeInter", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }
+          }
+        }
+      }, 
       "Spatial/KDtree": {
         "long_name": "k-d Trees",
         "sections": {
           "KD Trees": {
             "kd-treeAV": {
               "long_name": "KD tree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            },
-            "kd-interact": {
-              "long_name": "KD tree Interaction",
               "required": false,
               "points": 0,
               "showhide": "none",
@@ -4618,27 +4709,18 @@
         "long_name": "Bintrees",
         "sections": {
           "The Bintree": {
-            "bintreeCONBTEX": {},
-            "bintreeAV": {
+            "bintreeCON": {},
+            "BintreeAV": {
               "long_name": "Bintree Visualization",
               "required": false,
               "points": 0,
               "showhide": "none",
               "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Spatial/BintreeNew": {
-        "long_name": "Bintrees",
-        "sections": {
-          "The Bintree": {
-            "bintreeCONBTEX": {},
-            "bintreeAV": {
-              "long_name": "Bintree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
+            },
+            "BintreeInter": {
+              "long_name": "Bintree Interactive", 
+              "required": false, 
+              "points": 0, 
               "threshold": 1.0
             }
           }
@@ -4649,18 +4731,67 @@
         "sections": {}
       }
     },
+    "Senior Algorithms Course": {
+      "SeniorAlgAnal/AAIntro": {
+        "long_name": "Data and Algorithm Analysis",
+        "sections": {}
+      },
+      "SeniorAlgAnal/ProblemSolving": {
+        "long_name": "An Introduction to Problem Solving",
+        "sections": {}
+      },
+      "SeniorAlgAnal/AAOverview": {
+        "long_name": "Semester Overview",
+        "sections": {}
+      },
+      "SeniorAlgAnal/TOH": {
+        "long_name": "Introduction to Analyzing a Problem",
+        "sections": {}
+      },
+      "SeniorAlgAnal/BoundsReview": {
+        "long_name": "Problem Bounds",
+        "sections": {}
+      },
+      "SeniorAlgAnal/GrowthRate": {
+        "long_name": "Growth Rates Review",
+        "sections": {}
+      },
+      "SeniorAlgAnal/AdvSumm": {
+        "long_name": "Summation Techniques",
+        "sections": {}
+      },
+      "SeniorAlgAnal/Recurrence": {
+        "long_name": "Solving Recurrence Relations",
+        "sections": {
+          "Solving Recurrence Relations": {
+            "DivideAndConquerRecurrencesCON": {
+              "long_name": "Divide-and-Conquer Expansion Slideshow",
+              "required": true,
+              "points": 0.0,
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
     "Searching": {
-      "Development/SearchIntro": {
+      "Searching/SearchIntro": {
         "long_name": "Search Chapter Introduction",
         "sections": {}
       },
-      "Development/UnsortedSearch": {
-        "long_name": "Analyzing Search in Unsorted Arrays",
-        "sections": {}
+      "Searching/UnsortedSearch": {
+        "long_name": "Analyzing Search in Unsorted Lists",
+        "sections": {
+          "Analysis": {},
+          "Lower Bounds Proofs": {}
+        }
       },
-      "Development/SortedSearch": {
+      "Searching/SortedSearch": {
         "long_name": "Search in sorted Arrays",
-        "sections": {}
+        "sections": {
+          "Analysis": {},
+          "Lower Bounds Proof": {}
+        }
       },
       "Development/SelfOrg": {
         "long_name": "Self Organizing Lists",
@@ -4742,11 +4873,84 @@
         }
       }
     },
-    "Search Structures": {
-      "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
+    "Lower Bounds": {
+      "Bounds/BoundMax": {
+        "long_name": "Finding the Maximum Value",
+        "sections": {
+          "Finding the Maximum Value": {}
+        }
+      },
+      "Bounds/BoundAdversary": {
+        "long_name": "Adversary Lower Bounds",
         "sections": {}
       },
+      "Bounds/BoundState": {
+        "long_name": "State Space Lower Bounds",
+        "sections": {}
+      },
+      "Bounds/BoundiBest": {
+        "long_name": "Finding ith Best Element",
+        "sections": {}
+      },
+      "Bounds/SortingOptimal": {
+        "long_name": "Optimal Sorting",
+        "sections": {}
+      }
+    },
+    "Number Problems": {
+      "SeniorAlgAnal/Numeric": {
+        "long_name": "Number Problems",
+        "sections": {
+          "Introduction": {},
+          "Exponentiation": {},
+          "Largest Common Factor": {}
+        }
+      },
+      "SeniorAlgAnal/FFT": {
+        "long_name": "Fast Fourier Transform",
+        "sections": {}
+      }
+    },
+    "Probabilistic Algorithms": {
+      "SeniorAlgAnal/Probabilistic": {
+        "long_name": "Probabilistic Algorithms",
+        "sections": {}
+      },
+      "SeniorAlgAnal/Primes": {
+        "long_name": "Finding Prime Numbers",
+        "sections": {}
+      },
+      "SeniorAlgAnal/RandomNums": {
+        "long_name": "Random Numbers",
+        "sections": {}
+      },
+      "SearchStruct/SkipList": {
+        "long_name": "Skip Lists", 
+        "sections": {
+          "Skip Lists": {
+            "SkipListIntroCON": {
+              "long_name": "SkipListIntroCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "SkipListInsertCON": {
+              "long_name": "SkipListInsertCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "SkipListRmvCON": {
+              "long_name": "SkipListRmvCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          }
+        }
+      }
+    },
+    "Search Structures": {
       "SearchStruct/BalancedTree": {
         "long_name": "Balanced Trees",
         "sections": {}
@@ -4781,32 +4985,13 @@
         }
       }
     },
-    "Advanced Analysis": {
-      "Development/AdvSumm": {
-        "long_name": "Summation Techniques",
-        "sections": {}
-      },
-      "Development/Recurrence": {
-        "long_name": "Solving Recurrence Relations",
-        "sections": {
-          "Solving Recurrence Relations": {
-            "DivideAndConquerRecurrencesCON": {
-              "long_name": "Divide-and-Conquer Expansion Slideshow",
-              "required": true,
-              "points": 0.0,
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Development/AmortAnal": {
-        "long_name": "Amortized Analysis",
-        "sections": {}
-      }
-    },
-    "Algorithms": {
-      "Development/DynamicProgramming": {
+    "Miscellaneous": {
+      "SeniorAlgAnal/DynamicProgramming": {
         "long_name": "Dynamic Programming",
+        "sections": {}
+      },
+      "SeniorAlgAnal/AmortAnal": {
+        "long_name": "Amortized Analysis",
         "sections": {}
       },
       "Development/Knapsack": {
@@ -4917,56 +5102,12 @@
         "long_name": "Rabin-Karp String Search Algorithm",
         "sections": {}
       },
-      "Development/RandomIntro": {
-        "long_name": "Introduction to Randomized Algorithms",
-        "sections": {}
-      },
-      "Development/RandomNums": {
-        "long_name": "Random Numbers",
-        "sections": {}
-      }
-    },
-    "Lower Bounds": {
-      "Bounds/BoundLower": {
-        "long_name": "Introduction to Lower Bounds",
-        "sections": {}
-      },
-      "Bounds/BoundSearch": {
-        "long_name": "Lower Bounds on Search",
-        "sections": {}
-      },
-      "Bounds/BoundMax": {
-        "long_name": "Lower Bounds on Search",
-        "sections": {}
-      },
-      "Bounds/BoundAdversary": {
-        "long_name": "Adversary Lower Bounds",
-        "sections": {}
-      },
-      "Bounds/BoundState": {
-        "long_name": "State Space Lower Bounds",
-        "sections": {}
-      },
-      "Bounds/BoundiBest": {
-        "long_name": "Finding ith Best Element",
-        "sections": {}
-      },
-      "Bounds/SortingOptimal": {
-        "long_name": "Optimal Sorting",
-        "sections": {}
-      }
-    },
-    "Miscellaneous": {
       "Development/GenTreeImplement": {
         "long_name": "General Tree Implementations",
         "sections": {}
       },
       "Development/Kary": {
         "long_name": "K-ary Tree Implementations",
-        "sections": {}
-      },
-      "Development/SortProgExer": {
-        "long_name": "Sorting programming exercises",
         "sections": {}
       }
     },
@@ -5250,8 +5391,12 @@
         "long_name": "Coping with NP-complete problems",
         "sections": {}
       },
-      "Development/Impossible": {
+      "SeniorAlgAnal/Impossible": {
         "long_name": "Unsolveable Problems",
+        "sections": {}
+      },
+      "SeniorAlgAnal/Turing": {
+        "long_name": "Turing Machines",
         "sections": {}
       }
     },

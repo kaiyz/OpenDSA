@@ -1,8 +1,6 @@
 # OpenDSA (Development Channel)
 
-This is the development repository for the OpenDSA project. Note that
-the stable release version is maintained at:
-https://github.com/cashaffer/OpenDSA-stable.
+This is the development repository for the OpenDSA project.
 
 The goal of the OpenDSA project is to create open-source courseware for use in
 Data Structures and Algorithms courses, that deeply integrates textbook-quality
@@ -25,19 +23,20 @@ to the repo):
 
     git clone https://YOURGITHUBID@github.com/OpenDSA/OpenDSA.git OpenDSA
 
-Once you have cloned this repository, you will need to initialize and update the
-submodules and compile some of the libraries. Do the following:
+Once you have cloned this repository, you will need to initialize and
+update the submodules and compile some of the libraries.
+Do the following:
 
-    git submodule init
     make pull
+
+[Note that this probably won't work unless you have the proper tools
+installed.
+See: http://opendsa.readthedocs.io/en/latest/GettingStarted.html#setting-up-a-local-development-environment
 
 In order to pull a more recent copy of JSAV than what is in the submodule:
 
     cd JSAV
     git pull https://github.com/vkaravir/JSAV
-
-A similar command will let you pull the up-to-date version of QBank.
-
 
 The source files for the documentation can be found in the "Doc"
 directory.
@@ -69,9 +68,6 @@ directives that we have created.
 
 Exercises: Our Khan Academy Infrastructure-based exercises. Subdirectories
 divide the content by topic.
-
-**Frontend: Experimental interface for allowing instructor selection of modules.
-Currently not in use, will be replaced at some point.
 
 JSAV: The JavaScript Algorithm Visualization library (JSAV). This is a submodule
 for the OpenDSA repository, linked to: https://github.com/vkaravir/JSAV. Thus,

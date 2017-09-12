@@ -39,7 +39,6 @@ import subprocess
 import codecs
 import datetime
 import threading
-import requests
 import urllib
 
 from collections import Iterable
@@ -49,10 +48,6 @@ from ODSA_RST_Module import ODSA_RST_Module
 from ODSA_Config import ODSA_Config, parse_error
 from postprocessor import update_TOC, update_TermDef, make_lti
 from urlparse import urlparse
-# from canvas_sdk.methods import accounts, courses, external_tools, modules, assignments, assignment_groups
-# from canvas_sdk import RequestContext
-
-requests.packages.urllib3.disable_warnings()
 
 # List ocanvas_module_idf exercises encountered in RST files that do not appear in the
 # configuration file
@@ -281,9 +276,9 @@ def generate_index_rst(config, slides=False):
         index_rst.write("   :maxdepth: 3\n\n")
 
         # Process the Gradebook and Registerbook as well
-        if not slides:
-            process_module(config, mod_path='Gradebook', index_rst=index_rst)
-            process_module(config, mod_path='RegisterBook', index_rst=index_rst)
+        # if not slides:
+        #     process_module(config, mod_path='Gradebook', index_rst=index_rst)
+        #     process_module(config, mod_path='RegisterBook', index_rst=index_rst)
 
         # If a ToDo file will be generated, append it to index.rst
         if len(todo_list) > 0:
@@ -440,7 +435,7 @@ def configure(config_file_path, options):
     print "Configuring OpenDSA, using " + config_file_path
 
     # Load and validate the configuration
-    config = ODSA_Config(config_file_path, options.output_directory)
+    config = ODSA_Config(config_file_path, options.output_directory, options.no_lms)
 
     # Delete everything in the book's HTML directory, otherwise the
     # post-processor can sometimes append chapter numbers to the existing HTML
@@ -552,7 +547,7 @@ def configure(config_file_path, options):
         with codecs.open(config.book_dir + 'html/_static/GraphDefs.json', 'w', 'utf-8') as graph_defs_file:
             json.dump(cmap_map, graph_defs_file)
 
-    if not slides:
+    if not slides and not no_lms:
         make_lti(config, no_lms)
 
 # Code to execute when run as a standalone program
@@ -561,7 +556,7 @@ if __name__ == "__main__":
     parser.add_option("-s", "--slides", help="Causes configure.py to create slides",dest="slides", action="store_true", default=False)
     parser.add_option("--dry-run", help="Causes configure.py to configure the book but stop before compiling it", dest="dry_run", action="store_true", default=False)
     parser.add_option("-b", help="Accepts a custom directory name instead of using the config file's name.",dest="output_directory", default=None)
-    parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=False)
+    parser.add_option("--local", help="Causes the compiled book to work in local mode, which means no communication with the server",dest="local", action="store_true", default=True)
     parser.add_option("--no-lms", help="Compile book without changing internal links required by LMS",dest="no_lms", action="store_true", default=False)
     (options, args) = parser.parse_args()
 

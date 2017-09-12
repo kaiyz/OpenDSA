@@ -30,9 +30,9 @@ trivial lower bound of :math:`n` comparisons?
 We will focus on the specific question of finding the median element
 (i.e., the element with rank :math:`n/2`), because the resulting
 algorithm can easily be modified to find the :math:`i` th largest
-value for any :math:`i`. 
+value for any :math:`i`.
 
-.. _ MedPoset:
+.. _MedPoset:
 
 .. odsafig:: Images/MedPoset.png
    :width: 150
@@ -75,7 +75,7 @@ cost.
 Finding the average cost requires us to use a recurrence with full
 history, similar to the one we used to model the cost of Quicksort.
 If we do this, we will find that :math:`\mathbf{T}n` is in
-:math:`O(n)` in the average case. 
+:math:`O(n)` in the average case.
 
 Is it possible to modify our algorithm to get worst-case linear time?
 To do this, we need to pick a pivot that is guaranteed to discard a
@@ -146,8 +146,9 @@ and the :math:`\mathbf{T}(\lceil (7n - 5)/10\rceil)` term comes from
 the recursive call of the remaining (up to) 70% of the elements that
 might be left.
 
-We will prove that this recurrence is linear by assuming
-that it is true for some constant :math:`r`, and then show
+We will prove that this recurrence is linear using the process of
+:term:`constructive induction`.
+We assume that it is linear for some constant :math:`r`, and then show
 that :math:`\textbf{T}(n) \leq rn` for all :math:`n` greater than some
 bound.
 

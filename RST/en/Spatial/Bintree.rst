@@ -9,10 +9,15 @@
    :satisfies: Bintree
    :topic: Spatial Data Structures
 
-.. odsalink:: AV/Development/bintreeCON.css
+.. odsalink:: AV/Spatial/bintreeCON.css
+.. odsalink:: DataStructures/PrQuadAv.css
+.. odsalink:: DataStructures/PrQuadAvC.css
 
 The Bintree
 ===========
+
+The Bintree
+-----------
 
 This module presents a spatial data structure for storing
 point data in two or more dimensions, called the Bintree.
@@ -25,8 +30,8 @@ makes branching decisions based on a particular search key associated
 with that level, called the :term:`discriminator`.
 Its splitting decisions alternate among the key dimensions.
 Another difference from the BST is that the Bintree uses what is known
-as :term:`key space decomposition`, and so is a form of :term:`trie`.
-A key space decomposition splits the key space into equal halves,
+as :term:`key-space decomposition`, and so is a form of :term:`trie`.
+A key-space decomposition splits the key space into equal halves,
 rather than splitting at the key value of the object being stored.
 
 In theory, the Bintree could be used to unify search across any
@@ -36,8 +41,8 @@ multidimensional coordinates, such as locations in 2D or 3D space.
 
 .. _BintreeFig:
 
-.. inlineav:: bintreeCONBTEX dgm
-   :align: center
+.. inlineav:: bintreeCON dgm
+   :align: justify
 
    Example of a Bintree.
 
@@ -73,29 +78,14 @@ Bintree is associated with a particular discriminator.
 If the search process reaches a ``null`` pointer, then
 that point is not contained in the tree.
 
-Inserting a new node into the Bintree is similar to
-BST insertion.
-The Bintree search procedure is followed until a leaf node is found.
-If the leaf node is empty, then it can store the new point.
-If the leaf node already contains a point, then some additional work
-needs to be done.
-Call the point already stored in the Bintree :math:`A`, and the new
-node that we want to insert :math:`B`.
-We must split the node containing A into two, replacing it with a new
-internal node and two leaf children.
-Record :math:`A` is then placed in the appropriate child, and we
-restart the insertion from the new internal node.
-If :math:`B` falls within in the newly created empty leaf node, then
-it can be inserted there.
-But if :math:`B` falls within the newly created leaf node that just
-received :math:`A`, then the splitting process must repeat.
-Depending on how far apart :math:`A` and :math:`B` are, it is possible
-that many splits are required.
+Here is a visualization of the Bintree, that shows how inserting a
+point and removing a point works.
 
-Deleting from a Bintree requires that sibling leaf nodes be merged
-together if they are empty.
-Just like an insert operation can cause many levels of splitting, a
-delete operation can cause many levels of merging.
+.. avembed:: AV/Spatial/BintreeAV.html ss
+
+Below is an interactive visualization of the Bintree for practice.
+
+.. avembed:: AV/Spatial/BintreeInter.html ss
 
 Assume that we want to print out a list of all records that are within
 a certain distance :math:`d` of a given point :math:`P`.
@@ -223,18 +213,15 @@ used to represent empty leaf nodes.
 It turns out that the Bintree insert and delete methods are easier to
 implement when using the composite design.
 
-Below is a visualization of the Bintree. Use this visualization to
-help understand how the Bintree data structure works.
+.. [#] A more efficient computation is
+       :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
+       This avoids performing a square root function.
 
-.. avembed:: AV/Development/bintreeAV.html ss
+.. odsascript:: AV/Spatial/bintreeCON.js
 
-Below is another visualization of the Bintree. Be careful when using this.
-You must set "Bucket Capacity" to be 1, otherwise you will not see the
-Bintree as described in this section.
-Note that this is a Java applet, so you might need to give permission
-to your browser to run it.
-
-.. raw:: html
+.. 
+   Saved as a comment in case we need to find this later.
+   .. raw:: html
 
    <center>
    <iframe id="Bintree_iframe"
@@ -245,8 +232,3 @@ to your browser to run it.
    </iframe>
    </center>
 
-.. [#] A more efficient computation is
-       :math:`(P_x - N_x)^2 + (P_y - N_y)^2 \leq d^2`.
-       This avoids performing a square root function.
-
-.. odsascript:: AV/Development/bintreeCON.js

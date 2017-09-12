@@ -1073,8 +1073,8 @@
             }
           },
           "Implementation": {
-            "btTravInorderPRO": {
-              "long_name": "Binary Tree Inorder Traversal Exercise",
+            "btTravPreorderPRO": {
+              "long_name": "Binary Tree Preorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
@@ -1094,9 +1094,9 @@
               "threshold": 0.90
             }
           },
-          "Preorder Traversal Practice": {
-            "btTravPreorderPRO": {
-              "long_name": "Binary Tree Preorder Traversal Exercise",
+          "Inorder Traversal Practice": {
+            "btTravInorderPRO": {
+              "long_name": "Binary Tree Inorder Traversal Exercise",
               "exer_options": {
                 "JXOP-code": "none"
               },
@@ -1332,7 +1332,6 @@
       "BTRecurTutor/MultipleBinaryTrees": {
         "long_name": "Multiple Binary Trees",
         "sections": {
-          "Practice Exercises": {},
           "Mirror Image Binary Trees Exercise": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
@@ -1346,12 +1345,6 @@
             "points": 2.0
           },
           "Structurally Identical Binary Trees Exercise": {
-            "learning_tool": "code-workout",
-            "resource_type": "external_assignment",
-            "resource_name": "",
-            "points": 2.0
-          },
-          "Swap Binary Trees Exercise": {
             "learning_tool": "code-workout",
             "resource_type": "external_assignment",
             "resource_name": "",
@@ -3051,15 +3044,98 @@
     },
     "Advanced Data Structures": {
       "SearchStruct/SkipList": {
-        "long_name": "Skip Lists",
-        "sections": {}
-      },
+        "long_name": "Skip Lists", 
+        "sections": {
+          "Skip Lists": {
+            "SkipListIntroCON": {
+              "long_name": "SkipListIntroCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "SkipListInsertCON": {
+              "long_name": "SkipListInsertCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }, 
+            "SkipListRmvCON": {
+              "long_name": "SkipListRmvCON", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1.0
+            }
+          }
+        }
+      }, 
       "Spatial/Spatial": {
-        "long_name": "Spatial Data Structures",
-        "sections": {}
-      },
+        "long_name": "Spatial Data Structures", 
+        "sections": {
+          "Spatial Data Structures": {}
+        }
+      }, 
       "Spatial/PRquadtree": {
-        "long_name": "PR Quadtrees",
+        "long_name": "The PR Quadtree", 
+        "sections": {
+          "The PR Quadtree": {
+            "PRquadtreeAV": {
+              "long_name": "PRquadtreeAV", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }, 
+            "PRquadtree2ptAV": {
+              "long_name": "PRquadtree2ptAV", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }, 
+            "PRquadtreeInter": {
+              "long_name": "PRquadtreeInter", 
+              "required": false, 
+              "points": 0.0, 
+              "threshold": 1
+            }
+          }
+        }
+      }, 
+      "Spatial/KDtree": {
+        "long_name": "k-d Trees",
+        "sections": {
+          "KD Trees": {
+            "kd-treeAV": {
+              "long_name": "KD tree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Spatial/Bintree": {
+        "long_name": "Bintrees",
+        "sections": {
+          "The Bintree": {
+            "bintreeCON": {},
+            "BintreeAV": {
+              "long_name": "Bintree Visualization",
+              "required": false,
+              "points": 0,
+              "showhide": "none",
+              "threshold": 1.0
+            },
+            "BintreeInter": {
+              "long_name": "Bintree Interactive", 
+              "required": false, 
+              "points": 0, 
+              "threshold": 1.0
+            }
+          }
+        }
+      },
+      "Spatial/OtherSpatial": {
+        "long_name": "Other Spatial Data Structures",
         "sections": {}
       }
     },

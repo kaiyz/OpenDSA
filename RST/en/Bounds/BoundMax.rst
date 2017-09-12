@@ -12,6 +12,9 @@
 Finding the Maximum Value
 =========================
 
+Finding the Maximum Value
+-------------------------
+
 How can we find the :math:`i` th largest value in a sorted list?
 Obviously we just go to the :math:`i` th position.
 But what if we have an unsorted list?
@@ -57,7 +60,7 @@ So let's try again.
 
 This proof is sound.
 However, it will be useful later to abstract this by introducing the
-concept of :ref:`posets <poset> <BoundSearch>`.
+concept of :term:`posets <poset>`.
 We can view the maximum-finding problem as starting with a poset where
 there are no known relationships, so every member of the collection is
 in its own separate DAG of one element.

@@ -4,435 +4,543 @@
 .. distributed under an MIT open source license.
 
 .. avmetadata::
-   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda and Mostafa Mohammed
+   :author: Nick Parlante, Cliff Shaffer, Sally Hamouda, Mostafa Mohammed, and Sushma Mandava
    :requires:
    :satisfies: Pointer intro
    :topic: Pointers
 
-Basic Pointers
-==============
+.. odsalink:: AV/Pointers/num42CON.css
+.. odsalink:: AV/Pointers/employeeEmpRefCON.css
+.. odsalink:: AV/Pointers/empRefnullCON.css
+.. odsalink:: AV/Pointers/empRefsecondCON.css
+.. odsalink:: AV/Pointers/shallowdeepCON.css
+.. odsalink:: AV/Pointers/empPtrxxxCON.css
+.. odsalink:: AV/Pointers/employeePtr2CON.css
+.. odsalink:: AV/Pointers/examplePointerCodeCON.css
+.. odsalink:: AV/Pointers/badPointerPowCON.css
+.. odsalink:: AV/Pointers/memoryModelCON.css
 
-What is a pointer?
-------------------
 
-There's a lot of nice, tidy code you can write without knowing about :term:`pointers`. But once
-you learn to use the power of pointers, you can never go back. There are too many things
-that can only be done with pointers. But with increased power comes increased
-responsibility. Pointers allow new and more ugly types of bugs, and pointer bugs can
-crash in random ways which makes them more difficult to debug. Nonetheless, even with
-their problems, pointers are an irresistibly powerful programming construct. (The
-following explanation uses the Java language syntax. In Java, pointers and reference are
-interchangeable)
+Basic References
+================
 
-Pointers solve two common software problems. First, pointers allow different sections of
-code to share information easily. You can get the same effect by copying information
-back and forth, but pointers solve the problem better. Second, pointers enable complex
-linked data structures like :term:`linked lists` and :term:`binary tree`s.
+Pointers and References
+-----------------------
 
-Simple ``int`` and ``float`` variables operate pretty intuitively. An
-``int`` variable is like a box which can store a single ``int`` value such
-as 42. In a drawing, a simple variable is a box with its current value
-drawn inside.
+What is a Pointer?
+~~~~~~~~~~~~~~~~~~
+
+There's a lot of nice, tidy code you can write without knowing about
+:term:`pointers <pointer>`.
+But once you learn to use the power of pointers, you can never go
+back.
+There are too many things that can only be done with pointers.
+But with increased power comes increased responsibility.
+Pointers allow new and more ugly types of bugs, and pointer bugs can
+crash in random ways which makes them more difficult to debug.
+Nonetheless, even with their problems, pointers are an irresistibly
+powerful programming construct.
+
+Pointers solve two common software problems.
+First, pointers allow different sections of code to share information
+easily.
+You can get the same effect by copying information back and forth, but
+pointers solve the problem better.
+Second, pointers enable complex linked data structures like
+:term:`linked lists <linked list>` and
+:term:`binary trees <binary tree>`.
+
+
+What is a Reference?
+~~~~~~~~~~~~~~~~~~~~
+
+Java actually uses a restricted version of the pointer concept,
+which is called a :term:`reference`.
+While they mean roughly the same thing, the term "pointer" tends to be
+used in discussions that are not specific to any particular language
+or implementation.
+The word "pointers" connotes the common C/C++ implementation of
+pointers as :term:`addresses <address>` or locations in memory.
+Programmers have more limited access with a reference.
+This limits what they can do, but the Java philosophy is that this is
+more than made up for by a greater chance of the code working correctly.
+Essentially, Java programmers may only assign to a reference and
+compare two references for equality.
+Other uses of a reference are done implicitly with no control from the
+programmer.
+These restrictions reduce the chance for bugs.
+
+
+Data Types in Java
+~~~~~~~~~~~~~~~~~~
+
+Simple ``int`` and ``float`` variables operate pretty intuitively.
+An ``int`` variable is like a box that can store a single ``int``
+value such as 42.
+Visually, a simple variable can be viewed as a box with its current
+value shown inside.
 
 .. _num42Fig:
 
-.. odsafig:: Images/num42.png
-   :width: 200
+.. inlineav:: num42CON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
 
-A pointer works a little differently, it does not store
-a simple value directly. Instead, a pointer stores a :term:`reference` to another value.
-The variable the pointer refers to is sometimes known as its :term:`pointee`.
-In a drawing, a pointer is a box which contains the beginning of an arrow which leads
-to its pointee. (There is no single, official, word for
-the concept of a pointee |---| pointee is just the word used in these
+A reference variable works a little differently.
+It does not store a simple value directly.
+Instead, a reference variable stores a :term:`reference` to some
+:term:`object`.
+The object that the reference refers to is sometimes known as its
+:term:`pointee`.
+In the next figure, the reference variable (called ``empRef``) is
+shown as a box that contains the beginning of a directed line, which
+leads to its pointee (an ``Employee`` object, shown as the box storing
+two fields: the string value "John" and the integer value "1000").
+So ``empRef`` is the reference and the ``Employee`` object is its
+pointee.
+What is stored inside of ``empRef``?
+Its value is **not** an ``Employee`` object.
+Its value is only a reference to an ``Employee`` object.
+(By the way, there is no commonly used word for the concept of a
+pointee |---| pointee is just the word that we used in these
 explanations.)
 
-In Java,  Objects and Arrays are always accessed by references. The language
-automatically uses pointers behind the scenes for such complex types, and no pointer
-specific syntax is required. The programmer just needs to realize that operations like
-``a = b;`` will automatically be implemented with pointers if a and b are arrays or objects. The programmer needs to
-remember that assignments and parameters with arrays and objects are intrinsically shallow or
-shared |---| see the Deep vs. Shallow material below.
-
-The following drawing shows an object of type Employee : ``employee`` and a refernece (pointer) ``empPtr`` from the same type.
-The object ``employee`` contains the data of an employee named ``John``. The reference empPtr
-is a pointer which contains a reference to the object employee. The ``empPtr`` is the pointer and ``employee`` is its
-pointee. What is stored inside of ``empPtr``? Its value is not an ``Employee`` object. Its value is a
-reference to an ``Employess``.
-
-
-.. _numnumptrFig:
-
-.. odsafig:: Images/numnumptr.png
-   :width: 500
+.. inlineav:: employeeEmpRefCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
+
+Going back to simple things like ``int`` and ``float`` variables that
+just store a value in a box:
+In Java, these are referred to as
+:term:`primitive data types <primitive data type>`.
+In Java, Objects and Arrays are non-primitive data types,
+and they are always accessed by references.
+Java automatically uses references behind the scenes for such complex
+types, and there is no reference-specific syntax (like there is in C/C++).
+You just need to realize that assignment operations like
+``a = b`` will automatically be implemented with references if ``a`` and
+``b`` are arrays or objects,
+**which is different from the behavior that you get if** ``a`` **and**
+``b`` **are primitive objects like int**.
+Assignments and parameters with arrays and objects are intrinsically
+shallow or shared |---|, which is discussed in the Shallow vs. Deep
+Copying section below.
 
 
-Pointer Reference and Dereference
----------------------------------
+Referencing and Dereferencing
+-----------------------------
 
-The :term:`dereference` operation follows a pointer's reference to get
+:term:`Dereferencing <dereference>` means to follow a reference to get
 the value of its pointee.
-The value of the dereference of ``empPtr`` above is the object ``emplyee``. When the dereference operation is
-used correctly, it's simple. It just accesses the value of the pointee. The only restriction is
-that the pointer must have a pointee for the dereference to access. Almost all bugs in
-pointer code involve violating that one restriction. A pointer must be assigned a pointee
-before dereference operations will work.
+Dereferencing ``empRef`` in the figure above gives back its pointee, the
+``Employee`` object.
+So, "dereference" just means to access the value of the pointee.
+Visually, the result of a dereference is the object pointed to by the
+arrow.
+The key restriction is that the reference must have a pointee to access.
+A lot of bugs in reference code involve violating that one
+restriction.
+A reference must be assigned a pointee before dereference operations
+will work.
 
-
-The constant ``null`` is a special pointer value which encodes the idea of
-"points to nothing".
-It turns out to be convenient to have a well defined pointer value
-which represents the idea that a pointer does not have a pointee.
-It is a runtime error to dereference a NULL pointer.
-In drawings, the value NULL is usually drawn as a diagonal
-line between the corners of the pointer variable's box.
+The constant ``null`` is a special reference value that encodes the
+idea of "points to nothing".
+It turns out to be convenient to have a well-defined reference value
+to represent the idea that a reference does not have a pointee.
+It is a runtime error to try to get the pointee of a ``null``
+reference.
+In drawings, the value ``null`` is often drawn as X's or as a diagonal
+line between the corners of the reference variable's box.
 
 .. _numptrnullFig:
 
-.. odsafig:: Images/numptrnull.png
-   :width: 200
+.. inlineav:: empRefnullCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-The Java language uses the symbol ``null`` for this purpose.
 
 
-Pointer Assignment
+The Employee Class
 ------------------
 
-The assignment operation (``=``) between two pointers makes them point to the same
-pointee. It's a simple rule for a potentially complex situation, so it is worth repeating:
-assigning one pointer to another makes them point to the same thing. The example below
-adds a second pointer, ``second``, assigned with the statement ``second = empPtr;``.
-The result is that second points to the same pointee as empPtr. In the drawing, this
-means that the second and empPtr boxes both contain arrows pointing to ``employee``.
-Assignment between pointers does not change or even touch the pointees. It just changes
-which pointee a pointer refers to.
+We are going to use the ``Employee`` object for a lot of our examples,
+so let's make a formal introduction now.
+Meet the ``Employee`` class.
+
+.. codeinclude:: Pointers/PointerExample
+   :tag: EmployeeClass
+
+
+Reference Assignments
+---------------------
+
+An assignment (``=``) of one reference to another makes them point to
+the same pointee.
+It's a simple rule for a potentially complex situation, so it is worth
+repeating: assigning one reference to another makes them point to the
+same thing.
+The example below adds a second reference, named ``second``, assigned
+with the statement::
+
+   second = empRef;
+
+The result is that ``second`` points to the same pointee as
+``empRef``.
+In the drawing, this means that the ``second`` and ``empRef`` boxes
+both contain arrows pointing to the ``Employee`` object.
+Assignment between references does not change or even touch the
+pointees.
+It just changes which pointee a reference refers to.
 
 .. _numptrsecondlFig:
 
-.. odsafig:: Images/numptrsecond.png
-   :width: 500
+.. inlineav:: empRefsecondCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
 
+After the assignment, testing for ``(second == empRef)`` would return
+true.
 
-After assignment, the ``==`` test comparing the two pointers will return true. For example
-``(second == empPtr)`` above is true. The assignment operation also works with the
-NULL value. An assignment operation with a NULL pointer copies the NULL value
-from one pointer to another.
+The assignment operation also works with the ``null`` value.
+An assignment operation with a ``null`` reference copies the ``null``
+value from one reference to another.
 
-Memory drawings are the key to thinking about pointer code.
-When you are looking at code, thinking about how it will use memory at
+Memory drawings are key to thinking about reference code.
+When you are looking at code, think about how it will use memory at
 run time, then make a quick drawing to work out your ideas.
-This tutorial certainly uses drawings (visualizations) to show how pointers work.
-That's the way to do it.
+This tutorial uses a lot of drawings to show how references work.
+You should too.
 
-In this tutorial, the following class will be used to provide some examples about pointers.
-
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
-   :tag: EmployeeClass
-   :lang: Java
 
 Sharing
 ~~~~~~~
 
-Two pointers which both refer to a single pointee are said to be
+Two references which both refer to a single pointee are said to be
 "sharing".
 That two or more entities can cooperatively share a single memory
-structure is a key advantage of pointers in all computer
-languages.
-Pointer manipulation is just technique |---| sharing is
-often the real goal.
+structure is a key advantage of references.
+References ``second`` and ``empRef`` in the above example both share the
+same object, so either can modify the object's value.
+Reference manipulation is just technique |---| sharing is often the
+real goal.
 Later we will see how sharing can be used to provide efficient
 communication between parts of a program.
 
+.. avembed:: Exercises/Pointers/PointerEX1PRO.html ka
+
 
 Shallow and Deep Copying
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
-In particular, sharing can enable communication between two :term:`functions`. One function
-passes a pointer to the value of interest to another function. Both functions can access the
-value of interest, but the value of interest itself is not copied.
-This communication is called :term:`shallow copy` since instead of
-making and sending a (large) copy of the value of
-interest, a (small) pointer is sent and the value of interest is shared. The recipient needs to
-understand that they have a shallow copy, so they know not to change or delete it since it
-is shared. The alternative where a complete copy is made and sent is
+An important use of sharing is to enable communication between two
+functions.
+One function passes a reference to the object of interest to another
+function.
+Both functions can access the object of interest, but the object of
+interest itself is not copied.
+This communication is called :term:`shallow copy` since, instead of
+making and sending a (large) copy of the object of interest, a (small)
+reference is sent and the object of interest is shared.
+The recipient needs to understand that they have a shallow copy,
+so that they know not to change or delete it accidentally,
+since it is shared.
+The alternative |---| where a complete copy is made and sent |---| is
 known as a :term:`deep copy`.
-Deep copies are simpler in a way, since each function can change their copy
-without interfering with the other copy, but deep copies run slower because of all the
-copying.
-The drawing below shows shallow and deep copying between two functions, A() and B().
-In the shallow case, the smiley face is shared by passing a pointer between the two. In the
-deep case, the smiley face is copied, and each function gets their own.
+Deep copies are simpler in a way, since each function can change their
+copy without interfering with the other copy.
+But deep copies run slower because of all the copying.
+And if the second function was **meant** to modify the copy for every
+user of the object, then deep copy won't let this happen.
+The drawing below shows shallow and deep copying between two functions,
+``A()`` and ``B()``.
+In the shallow case, the smiley face is shared by passing a reference
+between the two.
+In the deep case, the smiley face is copied, and each function gets
+their own.
 
 .. _shallowdeepFig:
 
-.. odsafig:: Images/shallowdeep.png
-   :width: 400
+.. inlineav:: shallowdeepCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
 
 Here is an example of the difference between shallow and deep copying:
 
-.. codeinclude:: PointersBook/BasicPointers/shallowCopy
+.. codeinclude:: Pointers/shallowCopy
    :tag: shallow
 
+.. avembed:: Exercises/Pointers/PointerEX2PRO.html ka
 
-The next module will explain the above sharing technique in detail.
+             
+Bad References
+--------------
 
-
-Bad Pointers
-------------
-
-When a pointer is first allocated, it does not have a pointee.
-The pointer is :term:`uninitialized` or simply "bad".
-A dereference operation on a bad pointer is a serious runtime error.
-The dereference operation will crash or halt immediately (Java behaves this way).
-
-Each pointer must be assigned a pointee before it can support
-dereference operations. Before that, the pointer is bad and must not
-be used.
-In our memory drawings, the bad pointer value is shown with an XXX
+When a reference is first allocated, it does not have a pointee.
+The reference is :term:`uninitialized` or simply "bad".
+Dereferencing a bad reference is a serious runtime error.
+The dereference operation will crash or halt immediately.
+Each reference must be assigned a pointee before it can support
+dereference operations.
+Before that, the reference is bad and must not be used.
+In our memory drawings, the bad reference value is shown with an XXX
 value.
 
 .. _numptrxxxFig:
 
-.. odsafig:: Images/numptrxxx.png
-   :width: 200
+.. inlineav:: empPtrxxxCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
 
-Bad pointers are very common. In fact,  **every pointer starts out with a bad value**.
-Correct code overwrites the bad value with a correct reference to a pointee, and thereafter
-the pointer works fine. There is nothing automatic that gives a pointer a valid pointee.
+Bad references are common.
+In fact,  **every reference starts out with a bad value**.
+Correct code overwrites the bad value with a correct reference to a
+pointee, and thereafter the reference works fine.
+There is nothing automatic that gives a reference a valid pointee.
+You just have to program carefully.
+Fortunately, the Java compiler will usually spot when a reference
+variable has not been initialized, and generate an error (meaning
+that you cannot even complete compiling and run the program).
 
-Quite the opposite |---| most languages make it easy to omit this important step. You just
-have to program carefully. If your code is crashing, a bad pointer should be your first
+On the other hand, that does not stop you from assigning the variable
+to something that will lead to a serious problem later.
+If your code is crashing, a bad reference should be your first
 suspicion.
-Pointers in dynamic languages such as Perl, LISP, and Java work a little differently. The
-run-time system sets each pointer to ``null`` when it is allocated and checks it each time it
-is dereferenced. So code can still exhibit pointer bugs, but they will halt politely on the
-offending line instead of crashing haphazardly like C. As a result, it is much easier to
-locate and fix pointer bugs in dynamic languages. The run-time checks are also a reason
-why such languages always run at least a little slower than a compiled language like C or
-C++.
+In Java, the run-time system checks each time that a reference
+variable is dereferenced to see if it is ``null``.
+So code can still exhibit reference bugs, but the kind that
+dereferences a ``null`` value will at least halt politely on the
+offending line.
+A runtime error called ``NullPointerException`` will occur and
+the program will stop.
+As a result, it is much easier to locate and fix reference bugs in
+Java.
+Such run-time checks are also a reason why Java tends to run at least
+a little slower than a language like C or C++.
 
-One way to think about pointer code is that operates at two levels |---| pointer level and
-pointee level. The trick is that **both** levels need to be initialized and connected for things
-to work. (1) the pointer must be allocated, (2) the pointee must be allocated, and (3) the
-pointer must be assigned to point to the pointee. It's rare to forget step (1). But forget (2)
-or (3), and the whole thing will blow up at the first dereference. Remember to account for
-both levels |---| make a memory drawing during your design to make sure it's right.
+One way to think about reference code is that it operates at two
+levels |---| reference level and pointee level.
+The trick is that **both** levels need to be initialized and connected
+for things to work.
+(1) The reference must be allocated,
+(2) The pointee must be allocated, and (3) the reference must be
+assigned to point to the pointee.
+It's rare to forget step (1).
+But forget (2) or (3), and the whole thing will blow up at the first
+dereference.
+For example, a popular mistake is declare a string variable, but then
+never assign it an actual string before tyring to print or otherwise
+use it.
+Remember to account for both levels.
+Making a memory drawing during your design can help to make sure that
+it's right.
+
+Code with the most common sort of reference bug will **look** correct,
+but without the middle step where the references
+are assigned pointees.
+The bad code will compile fine, but at run-time, each dereference with
+a bad reference will raise ``NullPointerException`` and the program
+will crash.
+It is up to you to ensure that each reference is assigned a pointee
+before it is used.
+Here is a simple example of bad code, and a
+drawing of how memory is likely to react.
+
+.. codeinclude:: Pointers/badPointers
+   :tag: badPointers
+
+|
+
+.. inlineav:: badPointerPowCON dgm
+   :align: center
+
+Why Are Bad Reference Bugs So Common?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There must be a reason why Java cares so much about dereferencing
+``null`` pointers, that its always watching out for it. Why?
+Because it happens in a lot of programs.
+
+Why is it so often the case that programmers will allocate a
+reference, but forget to set it to refer to a pointee?
+The rules for references do not seem that complex, yet every
+programmer makes this error repeatedly. Why?
+One explanation is that we are trained by the tools that we use.
+Simple variables don't require any extra setup.
+You can allocate a simple variable, such as ``int``, and use it
+immediately.
+All that ``int``, ``char`` or ``boolean`` variable code that you have
+written has trained you, quite reasonably, that a variable may be used
+once it is declared.
+Unfortunately, references look like simple variables.
+But they require the extra initialization before use.
+It's unfortunate, in a way, that references happen look like other
+variables, since it makes it easy to forget that the rules for their
+use are very different.
+Oh well.
+Try to remember to assign your references to refer to pointees.
+But don't be surprised when you forget, and your program breaks.
 
 
 Syntax
 ------
 
-The above basic features of pointers, pointees, dereferencing, and
-assigning are the only concepts you need to build pointer code.
-However, in order to talk about pointer code, we need to use a known
+The above basic features of references, pointees, dereferencing, and
+assigning are the only concepts you need to build reference code.
+However, in order to talk about reference code, we need to use a known
 syntax which is about as interesting as... a syntax.
 We will use the Java language syntax which has the advantage that it
 has influenced the syntaxes of several languages.
 
-Pointer Type Syntax
-~~~~~~~~~~~~~~~~~~~
 
-A reference data type in Java is any variable of Objects or Arrays.
+Declaring a Reference Variable
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``Employee`` type pointer to ``Employee object``
-
-``int[]`` type pointer to an ``array of integers``
-
-
-
-Pointer Variables
-~~~~~~~~~~~~~~~~~
-
-Pointer variables are declared just like any other variable.
-The declaration gives the type and name of the new variable and
+A reference to a non-primitive data type (that is, a reference to any
+object) is defined by declaring a variable of that object's type.
+In other words, reference variables are declared just like any other
+variable.
+The declaration gives the type and identifier of the new variable, and
 reserves memory to hold its value.
-The declaration does not assign a pointee for the pointer |---| the
-pointer starts out with a ``null`` in Java language.
+But |---| and here is the most important thing |---| declaring the
+reference variable  does not assign a pointee for the reference.
+The reference starts out with a "bad" value until you assign it to something.
 
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
+.. codeinclude:: Pointers/PointerExample
    :tag: PointerVariables
-   :lang: Java
 
-Assigning a pointee to a pointer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are several ways to compute a reference to a pointee suitable
-for storing in a pointer.
-The simplest way is the assignment operator.
-The assignment operator can assign the reference value of the right hand side to
-pointer in the left hand side.
-The code below uses a pointer and an = to produce the earlier ``employee/empPtr`` example.
+Assigning a pointee to a reference
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. odsafig:: Images/numnumptr2.png
-   :width: 400
+.. inlineav:: employeePtr2CON ss
+   :output: show
+
+
+Dereference the reference
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Anytime a reference variable appears anywhere **other** than the left
+side of an assignment statement, it is
+dereferenced.
+This is really no different than how a primitive variable like an
+``int`` is used.
+Consider the following code::
+
+   int a = 5;
+   int b = a;
+
+In this case, the value of ``a`` in the second line is just 5.
+In exactly the same way, in this code::
+
+   Employee empPtr = johnRef;
+
+the value of ``johnRef`` is simply the location of the object that it
+is referencing.
+This is why ``empPtr`` ends up pointing to that same object.
+Of course, whenever you dereference any reference variable, it had
+better have a pointee.
+Otherwise, you get a runtime error of type ``NullPointerException``.
+
+
+Example Reference Code
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. inlineav:: examplePointerCodeCON ss
+   :output: show
+
+
+Reference Rules Summary
+-----------------------
+
+No matter how complex a reference structure gets, the list of rules
+remains short.
+
+* A reference variable stores a reference to its pointee.
+  The pointee, in turn, stores something useful.
+
+* The dereference operation on a reference accesses its pointee.
+  A reference may only be dereferenced after it has been assigned to
+  refer to a pointee.
+  Most reference bugs involve violating this one rule.
+
+* Allocating a reference does not automatically assign it to refer to
+  a pointee.
+  Assigning the reference to refer to a specific pointee is a separate
+  operation.
+  This is easy to forget.
+
+* Assignment between two references makes them refer to the same
+  pointee, which allows ``object sharing``.
+
+
+Java References vs Pointers
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Java references have two main features that distinguishes them from
+the less restrictive pointers in a language like C or C++.
+
+#. Fewer bugs.
+   Because the language implements the reference manipulation
+   accurately and automatically, the most common reference bug are no
+   longer possible. Yay!
+   Also, the Java runtime system checks each reference value every time
+   it is used, so dereferencing a ``null`` reference is caught
+   immediately on the line where it occurs.
+   This is in contrast to a language like C++, where dereferencing a
+   value of ``null`` might not make the program crash until later.
+   This can make a programmer much more productive to know
+   exactly where the problem occurred.
+
+#. Slower. Because the language takes responsibility for implementing
+   so much reference machinery at runtime, and does so much extra
+   runtime checking, Java code runs slower than
+   other languages like C and C++.
+   But the appeal of increased programmer efficiency and fewer bugs
+   makes the slowness worthwhile for many applications.
+
+
+How Are References Implemented In The Machine?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+How are references implemented?
+The short explanation is that every area of memory in the machine has
+a numeric address like 1000 or 20452.
+You can think of memory as a big array, and each position in memory
+has an index which is its memory address.
+A reference to an area of memory is really just an integer which is
+storing the address of that area of memory.
+
+.. inlineav:: memoryModelCON dgm
    :align: center
-   :capalign: justify
-   :figwidth: 100%
 
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
-   :tag: AssigningPointee
-   :lang: Java
+In the picture above, we assume that Java decides to place the new
+Employee object starting at memory location 2000.
+So the reference variable just stores a value of 2000.
+If we looked closely at the computer's memory then we could see
+exactly how the ``Employee`` object is layed out in the bytes in
+memory (beginning at 2000).
+But we don't show it in this picture because the internal details for
+how the ``Employee`` object is implemented are more complicated than
+we need to care about right now.
+(But you should go ahead and look this up if you really want to know.
+You will learn a lot.)
 
-Dereference the pointer
-~~~~~~~~~~~~~~~~~~~~~~~
-Using the pointer in any position that reads the value of the pointer will :term:`dereference` it.
-For example, when you are pointer variable is on the right hand side of an assignment statement.
-The pointer must have a pointee, or it's a runtime error of type NullPointerException
+A dereference operation looks at the address of the reference
+variable, and goes to that position in memory to retrieve the pointee
+stored there.
+An assignment of one reference variable to another just copies the
+numeric memory location.
+This is exactly like what happens when making an assignment between
+two ``int`` variables:
+The value is simply copied from one to the other.
+The value of ``null`` is always a special value that Java will never
+use as the location of any legal pointee.
+A bad reference is really just a reference which contains a ``null``
+value.
+Java's runtime environment is constantly watching for a dereference of
+a reference variable with a ``null`` value, so it can catch it right
+away if that happens.
 
-
-Example Pointer Code
---------------------
-
-With the syntax defined, we can now write some pointer code that
-demonstrates all the pointer rules.
-
-.. codeinclude:: PointersBook/BasicPointers/PointerExample
-   :tag: Example
-
-.. odsafig:: Images/abcpqxxx.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-.. odsafig:: Images/abcpq.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-.. odsafig:: Images/abcpqX.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-
-Bad Pointer Example
-~~~~~~~~~~~~~~~~~~~
-
-Code with the most common sort of pointer bug will **look** like the
-above correct code, but without the middle step where the pointers are
-assigned pointees.
-The bad code will compile fine, but at run-time, each dereference with
-a bad pointer will raise NullPointerException.
-The program will crash.
-It is up to the programmer to ensure that each pointer is assigned a
-pointee before it is used.
-The following example shows a simple example of the bad code and a
-drawing of how memory is likely to react.
-
-.. codeinclude:: PointersBook/BasicPointers/badPointers
-   :tag: badPointers
-
-.. odsafig:: Images/pPow.png
-   :width: 400
-   :align: center
-   :capalign: justify
-   :figwidth: 100%
-
-
-Pointer Rules Summary
----------------------
-
-No matter how complex a pointer structure gets, the list of rules remains short.
-
-* A pointer stores a reference to its pointee. The pointee, in turn,
-  stores something useful.
-
-* The dereference operation on a pointer accesses its pointee. A
-  pointer may only be dereferenced after it has been assigned to refer
-  to a pointee. Most pointer bugs involve violating this one rule.
-
-* Allocating a pointer does not automatically assign it to refer to a
-  pointee. Assigning the pointer to refer to a specific pointee is a
-  separate operation which is easy to forget.
-
-* Assignment between two pointers makes them refer to the same pointee
-  which introduces sharing.
-
-
-Java Pointers Features
-----------------------
-The Java pointers have two main features.
-
-* Fewer bugs. Because the language implements the pointer manipulation
-  accurately and automatically, the most common pointer bug  are no
-  longer possible, Yay! Also, the Java runtime system checks each
-  pointer value every time it is used,  so NULL pointer dereferences
-  are caught immediately on the line where they occur. This can make a
-  programmer much more productive.
-
-* Slower. Because the language takes responsibility for implementing
-  so much pointer machinery at runtime, Java code runs slower than the
-  equivalent C code. (There are other reasons for Java to run slowly
-  as well. There is active research in making Java faser in
-  interesting ways |---| the Sun "Hot Spot" project.) In any case, the
-  appeal of increased programmer efficiency and fewer bugs makes the
-  slowness worthwhile for some  applications.
-
-
-How Are Pointers Implemented In The Machine?
---------------------------------------------
-
-How are pointers implemented?
-The short explanation is that every area of memory in the
-machine has a numeric address like 1000 or 20452.
-A pointer to an area of memory is really just an integer which is
-storing the address of that area of memory. The dereference
-operation looks at the address, and goes to that area of memory to retrieve the pointee
-stored there. Pointer assignment just copies the numeric address from one pointer to
-another. The NULL value is generally just the numeric address 0 |---| the computer just
-never allocates a pointee at 0 so that address can be used to represent NULL. A bad
-pointer is really just a pointer which contains a NULL value. The pointer has not
-yet been assigned the specific address of a valid pointee. This is why dereference operations
-with bad pointers are so unpredictable. This will cause a run time error of type NullPointerException.
-
-
-The Term 'Reference'
---------------------
-
-The word :term:`reference` means almost the same thing as the word "pointer".
-The difference is that "reference" tends to be used in a discussion of pointer issues
-which is not specific to any particular language or implementation.
-The word "pointer" connotes the common C/C++ implementation of pointers as addresses.
-The word "reference" is also used in the phrase :term:`reference parameter`
-which is a technique that uses pointer parameters for two-way communication between functions.
-This technique is the subject of a later module.
-
-
-Why Are Bad Pointer Bugs So Common?
------------------------------------
-
-Why is it so often the case that programmers will allocate a pointer,
-but forget to set it to refer to a pointee?
-The rules for pointers don't seem that complex, yet every programmer
-makes this error repeatedly.
-Why?
-The problem is that we are trained by the tools we use.
-Simple variables don't require any extra setup.
-You can allocate a simple variable, such as ``int``
-, and use it immediately. All that ``int``, ``char``, struct fraction code you
-have written has trained you, quite reasonably,
-that a variable may be used once it is declared. Unfortunately, pointers look like simple variables but they require the extra initialization
-before use. It's unfortunate, in a way, that pointers happen look like other variables, since
-it makes it easy to forget that the rules for their use are very different. Oh well. Try to
-remember to assign your pointers to refer to pointees. Don't be surprised when you forget.
+.. odsascript:: AV/Pointers/num42CON.js
+.. odsascript:: AV/Pointers/employeeEmpRefCON.js
+.. odsascript:: AV/Pointers/empRefnullCON.js
+.. odsascript:: AV/Pointers/empRefsecondCON.js
+.. odsascript:: AV/Pointers/shallowdeepCON.js
+.. odsascript:: AV/Pointers/empPtrxxxCON.js
+.. odsascript:: AV/Pointers/employeePtr2CON.js
+.. odsascript:: AV/Pointers/examplePointerCodeCON.js
+.. odsascript:: AV/Pointers/badPointerPowCON.js
+.. odsascript:: AV/Pointers/memoryModelCON.js

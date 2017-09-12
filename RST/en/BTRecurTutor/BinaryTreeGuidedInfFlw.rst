@@ -47,6 +47,13 @@ Here is a problem that typically needs to visit more
 than just a single path, but not all of the nodes.
 
 .. inlineav:: IneffBinaryTreeRangeCON ss
+   :long_name: Inefficient Binary Tree Traversal on Range Slide Show
    :output: show
    
+
+Binary Search Tree Small Count Exercise
+---------------------------------------
+
+.. extrtoolembed:: 'Binary Search Tree Small Count Exercise'
+
 .. odsascript:: AV/BTRecurTutor/IneffBinaryTreeRangeCON.js

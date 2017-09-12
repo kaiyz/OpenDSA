@@ -90,7 +90,10 @@ def parse_directive_args(line, line_num, expected_num_args = -1, console_msg_pre
     print_err("%sERROR: Invalid Sphinx directive declaration" % console_msg_prefix)
 
   # Isolates the arguments to the directive
-  args = line[line.find(':: ') + 3:].split(' ')
+  if "'" in line:
+    args = [line[line.find(':: ') + 3:]]
+  else:
+    args = line[line.find(':: ') + 3:].split(' ')
 
   # Ensure the expected number of arguments was parsed (skip the check if -1)
   if expected_num_args > -1 and len(args) != expected_num_args:
@@ -159,7 +162,6 @@ def isSlideConf(item):
 
   return False
 
-
 def get_directive_type(directive):
   if isTable(directive):
     return 'table'
@@ -204,7 +206,6 @@ def update_counters(label_line, dir_type, mod_num, num_ref_map, counters):
 
   return (num_ref_map, counters)
 
-
 def process_ref_chap(extension, line, book_objects, start_space, last):
   """
     method responsible of converting :ref: and :chap: to :term: when
@@ -238,7 +239,6 @@ def process_ref_chap(extension, line, book_objects, start_space, last):
         line_t = line_t.replace(rel_labels, newDir)
     line_t = ' ' * start_space + line_t + last
   return line_t
-
 
 class ODSA_RST_Module:
 
@@ -326,13 +326,13 @@ class ODSA_RST_Module:
         dir_type = get_directive_type(line)
 
 
-        #Code to change the ..slide directive to a header when the -s option 
+        #Code to change the ..slide directive to a header when the -s option
         # is not added
         if (os.environ['SLIDES'] == 'no'):
           #Remove the slideConf Directive
           if dir_type == 'slideconf' or line.startswith(':autoslides:'):
             mod_data[i] = ''
-        
+
           #Change the slide directive
           if dir_type == 'slide':
             line_split = line.split('::')
@@ -453,7 +453,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for inlineav directive
-                options = ['long_name', 'points', 'required', 'threshold']
+                options = ['points', 'required', 'threshold']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
                 mod_data[i] += ''.join(rst_options)
@@ -491,7 +491,7 @@ class ODSA_RST_Module:
                 exer_conf = exercises[av_name]
 
                 # List of valid options for avembed directive
-                options = ['long_name', 'points', 'required', 'showhide', 'threshold', 'external_url']
+                options = ['points', 'required', 'showhide', 'threshold', 'external_url']
 
                 rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
 
@@ -508,6 +508,28 @@ class ODSA_RST_Module:
                 rst_options.append(' '*start_space +'   :exer_opts: %s\n' % xop_str)
 
                 mod_data[i] += ''.join(rst_options)
+        elif line.startswith('.. extrtoolembed::'):
+          # Parse the arguments from the directive
+
+          args = parse_directive_args(mod_data[i], i, 1, console_msg_prefix)
+          if args:
+            external_tool_name = args[0].replace("'", "")
+
+            # Append module name to embedded exercise
+            mod_data[i] += ' '*start_space + '   :module: %s\n' % mod_name
+
+            if external_tool_name not in exercises:
+              # Add the name to a list of missing exercises
+              missing_exercises.append(external_tool_name)
+            else:
+              # Add the necessary information from the configuration file
+              exer_conf = exercises[external_tool_name]
+              # List of valid options for avembed directive
+              options = ['long_name', 'learning_tool']
+
+              rst_options = [' '*start_space + '   :%s: %s\n' % (option, str(exer_conf[option])) for option in options if option in exer_conf]
+
+              mod_data[i] += ''.join(rst_options)
         elif line.startswith('.. showhidecontent::'):
           # Parse the arguments from the directive
           args = parse_directive_args(mod_data[i], i, 1, console_msg_prefix)

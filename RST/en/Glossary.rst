@@ -63,6 +63,9 @@ Glossary
       In :term:`graph` terminology, a graph that contains no
       :term:`cycles <cycle>`.
 
+   address
+      A location in memory.
+
    adjacent
       Two :term:`nodes <node>` of a :term:`tree` or two
       :term:`vertices <vertex>` of a :term:`graph` are said to be
@@ -88,6 +91,10 @@ Glossary
 
    ADT
       Abbreviation for :term:`abstract data type`.
+
+   adversary
+      A fictional construct introduced for use in an
+      :term:`adversary argument`.
 
    adversary argument
       A type of :term:`lower bounds proof` for a problem where a
@@ -124,6 +131,10 @@ Glossary
       :term:`asymptotic algorithm analysis`, generally used as a
       synonym for :term:`asymptotic analysis`.
 
+   allocated
+   allocation
+      Reserving memory for an object in the Heap memory.
+
    all-pairs shortest paths problem
       :to-term: Floyd's algorithm :label: solved by
 
@@ -152,8 +163,8 @@ Glossary
       cost for a series of operations and amortizes this total cost
       over the full series. 
       This is as opposed to considering every individual operation to
-      independently have the worst case cost, which might lead to an
-      overestimate for the total cost of the series.
+      independently have the :term:`worst case` cost, which might lead
+      to an overestimate for the total cost of the series.
 
    amortized cost
       The total cost for a series of operations to be used in an
@@ -235,6 +246,12 @@ Glossary
       :term:`balanced <balanced tree>`.
       Similar to a :term:`Splay Tree` in that it uses the concept of
       :term:`rotations <rotation>` in the insert and remove operations.
+
+   automatic variable
+      A synonym for :term:`local variable`.
+      When program flow enters and leaves the variable's scope,
+      automatic variables will be allocated and de-allocated
+      automatically.
 
    B$^+$-tree
       The most commonly implemented form of :term:`B-tree`.
@@ -502,8 +519,9 @@ Glossary
    bubble sort
       :to-term: algorithm :label: type of
 
-      A simple sort that requires :math:`Theta(n^2)` time in best,
-      average, and worst cases.
+      A simple sort that requires :math:`Theta(n^2)` time in
+      :term:`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases.
       Even an optimized version will normally run slower than
       :term:`insertion sort`, so it has little to recommend it.
 
@@ -603,6 +621,13 @@ Glossary
       most likely to be used in the near future.
       An example of a caching technique is the use of a
       :term:`buffer pool`.
+
+   call stack
+      Known also as execution stack. A stack that stores the function
+      call sequence and the return address for each function.
+
+   Cartesian product
+      For sets, this is another name for the :term:`set product`.
 
    ceiling
       Written :math:`\lceil x \rceil`, for real value :math:`x` the
@@ -839,6 +864,17 @@ Glossary
       In Theta notation, this is traditionally written as
       :math:`\Theta(1)`.
 
+   constructive induction
+      A process for finding the
+      :term:`closed form <closed-form solution>` for a
+      :term:`recurrence relation`,
+      that involves substituting in a guess for the closed form to
+      replace the recursive part(s) of the recurrence.
+      Depending on the goal (typically either to show that the
+      hypothesized growth rate is right, or to find the precise
+      constants), one then manipulates the resulting non-recursive
+      equation.
+
    container
    container class
       A :term:`data structure` that stores a collection of
@@ -924,6 +960,10 @@ Glossary
       A type together with a collection of operations to manipulate
       the type.
 
+   deallocated
+   deallocation
+      Free the memory allocated to an unused object.
+
    decision tree
       A theoretical construct for modeling the behavior of algorithms.
       Each point at which the algorithm makes a decision (such as an
@@ -932,7 +972,7 @@ Glossary
       Decision trees can be used in
       :term:`lower bounds proofs <lower bounds proof>`,
       such as the proof that sorting requires
-      :math:`\Omega(n \log n)` comparisons in the worst case.
+      :math:`\Omega(n \log n)` comparisons in the :term:`worst case`.
 
    decision problem
       A problem whose output is either "YES" or "NO".
@@ -1188,6 +1228,10 @@ Glossary
       while :math:`cn^k` is the amount of work necessary to combine the
       partial solutions.
 
+   divide-and-guess
+      A technique for finding a :term:`closed-form solution` to a
+      :term:`summation` or :term:`recurrence relation`.
+
    domain
       The set of possible inputs to a function.
 
@@ -1345,6 +1389,9 @@ Glossary
    exact-match query
       Records are accessed by unique identifier.
 
+   exceptions
+      Exceptions are techniques used to predict possible runtime errors and handle them properly.
+
    exchange
       A swap of adjacent records in an array.
 
@@ -1354,7 +1401,7 @@ Glossary
       :term:`Insertion Sort <insertion sort>` and
       :term:`Bubble Sort` are examples of exchange sorts.
       All exchange sorts require
-      :math:`\Theta(n^2)` time in the worst case.
+      :math:`\Theta(n^2)` time in the :term:`worst case`.
 
    expanding the recurrence
       A technique for solving a :term:`recurrence relation`.
@@ -1362,8 +1409,8 @@ Glossary
       a copy of recurrence.
 
    exponential growth rate
-      A growth rate function where :math:`n` (the input size) appears
-      in the exponent. For example, :math:`2^n`.
+      A :term:`growth rate` function where :math:`n` (the input size)
+      appears in the exponent. For example, :math:`2^n`.
 
    expression tree
       A :term:`tree` structure meant to represent a mathematical expression.
@@ -1672,6 +1719,14 @@ Glossary
       In :term:`algorithm analysis`, the rate at which the cost
       of the :term:`algorithm` grows as the size of its input grows.
 
+   guess-and-test
+      A technique used when trying to determine the
+      :term:`closed-form solution` for a 
+      :term:`summation` or :term:`recurrence relation`.
+      Given a hypothesis for the closed-form solution,
+      if it is correct, then it is often relatively easy to prove that
+      using :term:`induction <proof by induction>`.
+
    guided traversal
       A :term:`tree traversal` that does not need to visit every node
       in the tree.
@@ -1780,7 +1835,7 @@ Glossary
       To add a new value to a heap, or to remove the extreme value
       (the max value in a max-heap or min value in a min-heap) and
       update the heap,
-      takes :math:`\Theta(\log n)` time in the worst case.
+      takes :math:`\Theta(\log n)` time in the :term:`worst case`.
       However, if given all of the values in an unordered array,
       the values can be re-arranged to form a heap in only
       :math:`\Theta(n)` time. 
@@ -1789,7 +1844,8 @@ Glossary
 
    Heapsort
       A sorting algorithm that costs :math:`\Theta(n \log n)` time in
-      the best, average, and worst cases.
+      the :term`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases.
       It tends to be slower than :term:`Mergesort` and
       :term:`Quicksort`.
       It works by building a :term:`max heap`, and
@@ -1944,9 +2000,10 @@ Glossary
       :term:`enumerate <enumeration>` the nodes in sorted order.
 
    Insertion Sort
-      A sorting algorithm with :math:`\Theta(n^2)` average and worst
-      case cost, and :math:`Theta(n)` best case cost.
-      This best-case cost makes it useful when we have reason to
+      A sorting algorithm with :math:`\Theta(n^2)`
+      :term`average <average case>` and :term:`worst case` cost,
+      and :math:`Theta(n)` :term:`best case` cost.
+      This best case cost makes it useful when we have reason to
       expect the input to be nearly sorted.
 
    instance variable
@@ -2166,6 +2223,15 @@ Glossary
       level :math:`d` in the tree.
       The root is the only node at level 0, and its depth is 0.
 
+   lexical scoping
+      Lexical scoping, also known as static scoping, of a variable so
+      that it may only referenced in the block of code in which the
+      variable is defined.
+
+   lifetime
+      For a variable, lifetime is the amount of time it will exist
+      before it is destroyed.
+
    linear growth rate
       For input size :math:`n`, a growth rate of :math:`cn` (for
       :math:`c` any positive constant).
@@ -2216,12 +2282,19 @@ Glossary
    linear search
       Another name for :term:`sequential search`.
 
+   link node
+      A widely used supporting object that forms the basic
+      building block for a :term:`linked list` and similar
+      :term:`data structures <data structure>`.
+      A link node contains one or more fields that store data, and a
+      :term:`pointer` or :term:`reference` to another link node.
+
    linked list
       An implementation for the list ADT that uses
       :term:`dynamic allocation`
-      of link nodes to store the list elements. Common variants are the
-      :term:`singly linked list`, :term:`doubly linked list` and
-      :term:`circular list`.
+      of :term:`link nodes <link node>` to store the list elements.
+      Common variants are the :term:`singly linked list`,
+      :term:`doubly linked list` and :term:`circular list`.
       The :term:`overhead` required is the pointers in each link node.
 
    linked stack
@@ -2245,6 +2318,7 @@ Glossary
       Hash systems usually try to keep the load factor below 50%.
 
    local variable
+   local variables
       A variable declared within a function or method.
       It exists only from the time when the function is called to when
       the function exits.
@@ -2263,6 +2337,9 @@ Glossary
       that the next or future accesses will come close to the most
       recent access.
       This is the fundamental property for success of :term:`caching`.
+
+   local storage
+      local storage.
 
    logarithm
       The `logarithm` of base :math:`b` for value :math:`y` is the power
@@ -2374,7 +2451,8 @@ Glossary
 
    Mergesort
       A sorting algorithm that requires :math:`\Theta(n \log n)` in
-      the best, average, and worst cases.
+      the :term:`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases.
       Conceptually it is simple:
       Split the list in half, sort the halves, then merge them
       together.
@@ -2587,6 +2665,13 @@ Glossary
       This term is sometimes used as a synonym to the term
       :term:`bag`.
 
+   necessary fallacy
+      A common mistake in a
+      :term:`lower bounds proof` for a problem, where the proof makes
+      an inappropriate assumption that any algorithm must operate in
+      some manner (typically in the way that some known algorithm
+      behaves).
+
    neighbor
       :to-term: adjacent :label: is
       :to-term: graph :label: context
@@ -2760,7 +2845,7 @@ Glossary
       data from :term:`backing storage`, which is the fundamental unit
       of I/O.
 
-   parameters
+   parameter
       The values making up an input to a :term:`function`.
 
    parent
@@ -2812,6 +2897,15 @@ Glossary
       :term:`pivot` value, and the other with values greater than the
       pivot. This process takes :math:`\Theta(i)` time on a sublist of
       length :math:`i`.
+
+   pass by value
+      A copy of a variable is passed to the called function. So, any
+      modifications will not affect the original variable.
+
+   pass by reference
+      A reference to the variable is passed to the called
+      function. So, any modifications will affect the original
+      variable.
 
    path
       In :term:`tree` or :term:`graph` terminology,
@@ -2884,9 +2978,8 @@ Glossary
       Formal name for what is commonly referred to as a
       :term:`PR quadtree`.
 
-   pop
-      A specialized term used to indicate removing an :term:`element`
-      from a :term:`stack`. 
+   pointer
+      A variable whose value is the :term:`address` of another variable; a link.
 
    pointer-based implementation for binary tree nodes
       A common way to implement :term:`binary tree` :term:`nodes
@@ -2903,6 +2996,10 @@ Glossary
       dynamically.  Two basic forms exist:
       :term:`run-time polymorphism` and :term:`compile-time polymorphism`.
 
+   pop
+      A specialized term used to indicate removing an :term:`element`
+      from a :term:`stack`. 
+
    poset
       Another name for a :term:`partially ordered set`.
 
@@ -2913,10 +3010,7 @@ Glossary
 
    pointee
       The term pointee refers to anything that is pointed to by a
-      :term:`pointer <pointers>` or :term:`reference`.
-
-   pointers
-      variable that points to memory address.
+      :term:`pointer` or :term:`reference`.
 
    postorder traversal
       In a :term:`binary tree`, a :term:`traversal` that first
@@ -3002,6 +3096,12 @@ Glossary
       The classic example is :term:`linear probing`.
       This tends to happen when a group of keys follow the same
       :term`probe sequence` during collision resolution.
+
+   primitive data type
+      In Java, one of a particular group of
+      :term:`simple types <simple type>` that are not implemented as
+      objects.
+      An example is an ``int``.
 
    priority
       A quantity assigned to each of a collection of
@@ -3166,13 +3266,16 @@ Glossary
       end, and removed only from the other one end.
 
    Quicksort
-      A sort that is :math:`\Theta(n \log n)` in the best and average
-      cases, though :math:`\Theta(n^2)` in the worst case. However, a
-      reasonable implmentation will make the worst case occur under
-      exceedingly rare circumstances. Due to its tight inner loop, it
-      tends to run better than any other known sort in general
-      cases. Thus, it is a popular sort to use in code libraries. It
-      works by divide and conquor, by selecting a :term:`pivot` value,
+      A sort that is :math:`\Theta(n \log n)` in the
+      :term:`best <best case>` and :term:`average <average case>`
+      cases, though :math:`\Theta(n^2)` in the :term:`worst case`.
+      However, a reasonable implmentation will make the worst case
+      occur under exceedingly rare circumstances.
+      Due to its tight inner loop, it tends to run better than any
+      other known sort in general cases.
+      Thus, it is a popular sort to use in code libraries.
+      It works by divide and conquer, by selecting a :term:`pivot`
+      value,
       splitting the list into parts that are either less than or
       greater than the pivot, and then sorting the two parts.
 
@@ -3327,7 +3430,9 @@ Glossary
       references.
 
    reference parameter
-      a :term:`function` of :term:`method` parameter that can be modified inside the function or method.
+      A :term:`parameter` that has been
+      :term:`passed by reference <pass by reference>`.
+      Such a parameter can be modified inside the function or method.
 
    reflexive
       In set notation, binary relation :math:`R` on set :math:`S` is
@@ -3508,12 +3613,14 @@ Glossary
       :term:`disk access`.
 
    selection sort
-      While this sort requires :math:`\Theta(n^2)` time in the best,
-      average, and worst cases, it requires only :math:`\Theta(n)`
-      swap operations. Thus, it does relatively well in cases where
-      swaps are expensive. It can be viewed as an optimization on
-      bubble sort where swaps are deferred until the end of each
-      iteration.
+      While this sort requires :math:`\Theta(n^2)` time in the
+      :term:`best <best case>`, :term:`average <average case>`,
+      and :term:`worst <worst case>` cases, it requires only
+      :math:`\Theta(n)` swap operations.
+      Thus, it does relatively well in applications where swaps are
+      expensive.
+      It can be viewed as an optimization on :term:`bubble sort`,
+      where a swap is deferred until the end of each iteration.
 
    self-organizing list
       :to-term: move-to-front :label: heuristic
@@ -3587,15 +3694,28 @@ Glossary
       A collection of distinguishable :term:`members <member>` or
       :term:`elements <element>`.
 
-   shallow copy
-      Copying the :term:`reference` or :term:`pointer <pointers>`
-      value without copying the actual content.
+   set product
+      Written :math:`\mathbf{Q} \times \mathbf{P}`, the set product is
+      a set of ordered pairs such that ordered pair :math:`(a, b)` is
+      in the product whenever :math:`a \in \mathbf{P}` and
+      :math:`b \in \mathbf{Q}`.
+      For example, when :math:`\mathbf{P} = \{2, 3, 5\}` and
+      :math:`\mathbf{Q} = \{5, 10\}`,
+      :math:`\mathbf{Q} \times \mathbf{P} =
+      \{(2, 5),\ (2, 10),\ (3, 5),\ (3, 10),\ (5, 5),\ (5, 10)\}`.
 
+   shallow copy
+      Copying the :term:`reference` or :term:`pointer`
+      value without copying the actual content.
 
    Shellsort
       A sort that relies on the best-case cost of
-      :term:`insertion sort` to improve over :math:`\Theta(n^2)` worst
-      case cost. 
+      :term:`insertion sort` to improve over :math:`\Theta(n^2)`
+      :term:`worst case` cost.
+
+   shifting method
+      A technique for finding a :term:`closed-form solution` to a
+      :term:`summation` or :term:`recurrence relation`.
 
    shortest path
       Given a :term:`graph` with distances or :term:`weights <weight>`
@@ -3810,6 +3930,13 @@ Glossary
       A list-like structure in which elements may be inserted or
       removed from only one end.
 
+   stack frame
+      Frame of data that pushed into and poped from call stack
+
+
+   stack variable
+      Another name for a :term:`local variable`.
+
    stale pointer
       Within the context of a :term:`buffer pool` or
       :term:`memory manager`, this refers to a reference to a
@@ -3914,6 +4041,10 @@ Glossary
       :math:`B`, or equivalently :math:`B` is a :term:`superset` of
       :math:`A`, if all elements of :math:`A` are also elements of
       :math:`B`.
+
+   subtract-and-guess
+      A technique for finding a :term:`closed-form solution` to a
+      :term:`summation` or :term:`recurrence relation`.
 
    subtree
       A subtree is a :term:`subset` of the nodes of a binary tree that
@@ -4176,6 +4307,12 @@ Glossary
       for different situations (such as the :term:`best case` or
       :term:`worst case`), we typically have to specify which
       situation we are referring to.
+
+   value parameter
+      A :term:`parameter` that has been
+      :term:`passed by value <pass by value>`.
+      Changing such a parameter inside the function or method will not
+      affect the value of the calling parameter.
 
    variable-length coding
       :to-term: Huffman codes :label: example

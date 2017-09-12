@@ -182,7 +182,8 @@ implemented using a simpler design.
 When selecting a data structure to solve a problem, you should follow
 these steps.
 
-#. Analyze your problem to determine the :term:`basic operations` that
+#. Analyze your problem to determine the
+   :term:`basic operations <basic operation>` that
    must be supported. 
    Examples of basic operations include inserting a data
    item into the data structure, deleting a data item from the
@@ -251,8 +252,8 @@ you determine the best data structure for the task.
    and (2) the requirements for the database system that manages the
    accounts.
 
-   The typical customer opens and closes accounts far less often than he
-   or she accesses the account.
+   The typical customer opens and closes accounts far less often than
+   accessing the account.
    Customers are willing to spend many minutes during the process of
    opening or closing the account, but are typically not willing to
    wait more than a brief time for individual account transactions
@@ -343,6 +344,7 @@ Introduction Summary Questions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. avembed:: Exercises/Background/IntroSumm.html ka
+   :long_name: Introduction Summary Questions
 
 
 Some Software Engineering Topics

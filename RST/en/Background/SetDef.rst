@@ -67,6 +67,8 @@ and their relationships.
       \mathbf{P}\,-\,\mathbf{Q} &
         \mbox{Set difference: all elements of set}
         \ \mathbf{P}\ \mbox{NOT in set}\ \mathbf{Q}\\
+      \mathbf{P}\,\times\,\mathbf{Q} &
+        \mbox{Set (Cartesian) Product: yields a set of ordered pairs}\\
       \end{array}
 
 Here are some examples of this notation in use.
@@ -102,8 +104,16 @@ Finally, the set {5, 3, 2} is indistinguishable from set
 Likewise, set {2, 3, 2, 5} is also indistinguishable from 
 :math:`\mathbf{P}`, because sets have no concept of duplicate elements.
 
-The :term:`powerset` of a set :math:`\mathbf{S}` is the set of all
-possible subsets for :math:`\mathbf{S}`.
+The :term:`set product` or :term:`Cartesian product` of two sets
+:math:`\mathbf{Q} \times \mathbf{P}` is a set of ordered pairs.
+For our example sets, the set product would be
+
+.. math::
+
+   \{(2, 5),\ (2, 10),\ (3, 5),\ (3, 10),\ (5, 5),\ (5, 10)\}.
+
+The :term:`powerset` of a set :math:`\mathbf{S}` (denoted :math:`2^S`)
+is the set of all possible subsets for :math:`\mathbf{S}`.
 Consider the set :math:`\mathbf{S} = \{ a, b, c \}`.
 The powerset of :math:`\mathbf{S}` is
 
@@ -202,11 +212,12 @@ Relation :math:`=` is reflexive, symmetric (and antisymmetric!),
 and transitive.
 For people, the relation "is a sibling of" is symmetric and
 transitive.
-If we define a person to be a sibling of himself, then it is
-reflexive; if we define a person not to be a sibling of himself, then
+If we define a person to be a sibling of themself, then it is
+reflexive; if we define a person not to be a sibling of themself, then
 it is not reflexive.
 
 .. avembed:: Exercises/Background/SetTFrelation.html ka
+   :long_name: Relations Exercise
 
 
 Equivalence Relations
@@ -249,7 +260,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
 .. topic:: Example
 
    If we clarify the definition of sibling to mean that a person is
-   a sibling of him- or herself, then the sibling relation is an
+   a sibling of themself, then the sibling relation is an
    equivalence relation that partitions the set of people. 
 
 .. topic:: Example
@@ -277,6 +288,7 @@ computing a :ref:`minimal cost spanning tree <MCST> <MCST>`.
       :math:`x \bmod m = z \bmod m`.
 
 .. avembed:: Exercises/Background/SetTFequivrel.html ka
+   :long_name: Equivalence Exercise
 
 
 Partial Orders
@@ -318,3 +330,4 @@ then the order is called a :term:`total order` or :term:`linear order`.
    powerset of the integers.
 
 .. avembed:: Exercises/Background/SetTFpartialorder.html ka
+   :long_name: PartialOrder Exercise

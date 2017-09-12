@@ -124,3 +124,9 @@ In this situation you must look at the values of the children to
 decide something about the current node.
 You do **not** look at the children to decide whether to make a recursive
 call.
+
+
+Binary Tree Increment By One Exercise
+-------------------------------------
+
+.. extrtoolembed:: 'Binary Tree Increment By One Exercise'

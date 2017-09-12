@@ -1573,12 +1573,6 @@
             "resource_type": "external_assignment",
             "resource_name": "",
             "points": 2.0
-          },
-          "Swap Binary Trees Exercise": {
-            "learning_tool": "code-workout",
-            "resource_type": "external_assignment",
-            "resource_name": "",
-            "points": 2.0
           }
         }
       },
@@ -3082,21 +3076,6 @@
         }
       },
       "Spatial/Bintree": {
-        "long_name": "Bintrees",
-        "sections": {
-          "The Bintree": {
-            "bintreeCONBTEX": {},
-            "bintreeAV": {
-              "long_name": "Bintree Visualization",
-              "required": false,
-              "points": 0,
-              "showhide": "none",
-              "threshold": 1.0
-            }
-          }
-        }
-      },
-      "Spatial/BintreeNew": {
         "long_name": "Bintrees",
         "sections": {
           "The Bintree": {

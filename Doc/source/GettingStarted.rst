@@ -29,12 +29,8 @@ Canvas server, or use the public test server provided by Instructure
 at https://canvas.instructure.com.
 With your account in place, you can tell Canvas to create a course.
 The place to start is to create a course named "Test".
-You will then go back to your development environment, and create a
-:ref:`course configuration file <Configuration>`.
-You should start with one named "Test_LMSconf.json", made by copying
-the template in the config directory.
-You can then go to the top of the OpenDSA repository, and do
-``make Test``.
+You will then go back to your development environment, and follow the
+instructions on `OpenDSA-DevStack readme page <https://github.com/OpenDSA/OpenDSA-DevStack#generate-canvas-course-using-opendsa-web-interface>`_ to create a "course offering".
 If everything worked right, then you will have populated your course
 on Canvas with some content.
 At this point, you are ready to learn about the parts of the system
@@ -60,7 +56,7 @@ Repositories and Official Mirrors
 
 Main development is done out of repositories hosted at GitHub.
 We use a GitHub "organization" at https://github.com/OpenDSA.
-Here is a list of the individual repositories that we use: 
+Here is a list of the individual repositories that we use:
 
 * The main OpenDSA development repository:
   https://github.com/OpenDSA/OpenDSA.
@@ -73,7 +69,7 @@ Here is a list of the individual repositories that we use:
   https://github.com/vkaravir/JSAV.
 
 * We use the Khan Academy infrastructure for exercises and distribute
-  the necessary portions with OpenDSA.
+  the necessary portions with OpenDSA. We decided to clone the Khan Academy framework under the OpenDSA account on GitHub, and implement OpenDSA requirements as a layer that overrides some of the Khan Academy framework functionalities, so that we can maintain compatibility and move forward by continuously pulling the original framework’s latest modifications. The customized Khan Academy framework can be found at: https://github.com/OpenDSA/khan-exercises.git.
 
 * Support for setting up OpenDSA servers can be found at https://github.com/OpenDSA/OpenDSA-DevStack.
 
@@ -87,7 +83,7 @@ The stable releases of OpenDSA and JSAV are mirrored at:
 http://algoviz.org/OpenDSA/ and http://algoviz.org/OpenDSA/JSAV,
 respectively.
 The built version of the stable modules are mirrored at:
-http://algoviz.org/OpenDSA/Books. 
+http://algoviz.org/OpenDSA/Books.
 The development versions of OpenDSA and JSAV are mirrored at:
 http://algoviz.org/OpenDSA/dev/OpenDSA and
 http://algoviz.org/OpenDSA/dev/OpenDSA/JSAV, respectively.
@@ -166,7 +162,7 @@ The requirements for CSS and JavaScript files are embedded in
 the validation tools and settings built into the OpenDSA Makefile.
 No code gets out of the "Development" stage and into public use until
 it follows our rules for splitting into separate HTML/CSS/JavaScript
-files and passes the validation tools with zero warnings and errors. 
+files and passes the validation tools with zero warnings and errors.
 
 **HTML Pages**
 Ideally, HTML pages that are part of OpenDSA should pass the W3
@@ -200,169 +196,7 @@ Developers should strive to eliminate all warnings (and of course, all
 errors).
 
 **JSON Files**
-We use ``jsonlint`` to validate css files.
-
------
-Tools
------
-
-This section describes the various tools that are either required or
-might be particularly helpful for various aspects of OpenDSA
-development.
-
-git
-===
-
-There are several versions of git for Windows
-We recommend the version found at http://msysgit.github.com/.
-This guide assumes that windows users are working through the Git Bash
-command window.
-When installing ``msysgit``, you should install it at the
-level of ``C:\``, rather than in ``C:\Program Files``.
-Otherwise, you are likely to have troubles interacting with
-``GnuWin32`` tools (for ``make``).
-Aside from this, just accept the default configuration options.
-
-
-make
-====
-
-GNU make for Windows can be found at
-http://gnuwin32.sourceforge.net/packages/make.htm.
-
-Python
-======
-
-We are using Python 2.7 (NOT 3.x).
-
-
-Python setuptools
-=================
-
-Python setuptools is used for installing Sphinx.
-On Linux this might come preinstalled.
-If not, run the following using the appropriate package manager for
-your distribution (on Ubuntu, it is "apt-get")::
-
-   sudo <package_manager> install python-setuptools
-
-On windows, see http://pypi.python.org/pypi/setuptools#files.
-You will need to include [PythonHome]/Scripts on your PATH system
-variable for both setuptools and sphinx.
-I had some trouble installing setuptools for the 64-bit version of
-Python 2.7.3 on Windows.
-When I tried to install setuptools, it wouldn't recognize that a
-Python installation was available.
-This is a known problem.
-You can either re-install the 32-bit version, or look
-on the internet for the proper registry work-around.
-
-
-sphinx
-======
-
-For documentation, see http://sphinx.pocoo.org/contents.html.
-
-With Python and setuptools installed, just type
-``easy_install -U Sphinx`` at the command line.
-
-
-Hieroglyph
-==========
-
-Hieroglyph is only needed to compile course slides.
-You need to use version 0.5.5 (newer versions don't work).
-To install, just type ``easy_install pip; pip install hieroglyph==0.5.5``
-at the command line.
-
-nodejs
-======
-
-We don't use nodejs directly in our toolchain, but this is useful for
-installing several of the other tools.
-For installation instructions, see
-http://nodejs.org (and don't forget to check for the 64-bit version if
-that is the OS you are running).
-
-eslint
-======
-
-Once you have nodejs installed, just do::
-
-   npm install -g eslint
-
-csslint
-=======
-
-Once you have nodejs installed, just do::
-
-   npm install -g csslint
-
-Note: To be able to lint check either JavaScript or CSS, you need to
-put it in separate files from your HTML code.
-
-jsonlint
-========
-
-Once you have nodejs installed, just do::
-
-   npm install -g jsonlint
-
-uglifyjs
-========
-
-We use this for minimizing JavaScript code.
-To install on Windows::
-
-   npm install -g uglify-js
-
-On Linux, you more likely will need to use the package manager.
-For example, on Ubuntu::
-
-   apt-get install uglifyjs
-
-Some other things: requirements.txt
-===================================
-
-(This needs more documentation.)
-From the top level of the OpenDSA directory, do the following:
-
-   pip install -r requirements.txt
-
-Notes for Windows
-=================
-
-* You will need to be sure that Git, Python, and make are on your
-  path.
-  On Windows 7, you edit your path variable by right-clicking your
-  Computer icon, clicking on "Advanced system settings" and then
-  "Environment Variables".
-
-* If you have a 64-bit operating system, be aware that the various GNU
-  tools will not work properly if they see "Program Files (x86)" on the
-  system path variable. You might need to install these tools elsewhere,
-  and/or reorder things on the path so that the GNU tool appears before
-  anything referencing "Program Files (x86)". 
-
-* We have had a lot of trouble getting the Git Bash shell to work
-  properly when running GnuWin32 tools like "make". One solution is to
-  make sure that Git is not installed to a directory whose name has
-  spaces in it (in particular, the standard "Program Files" directory
-  that is the default). Instead, we find it most reliable to install Git
-  directly into C:/.
-
-* Beware if you have Cygwin installed on your Windows machine: There
-  might be path conflicts between Cygwin on the one hand, and the Git
-  Bash shell and the GNU tools on the other.
-  If you insist on trying to use both on your system, you are on your
-  own.
-  Otherwise you have two reasonable options: 
-
-  * If you don't use Cygwin much, then delete it entirely from your
-    system.
-
-  * Or stick completely with using Cygwin, by running Git and your
-    other tools from within it instead of the Git command shell.
+We use ``jsonlint`` to validate json files.
 
 
 -------------------------
@@ -374,7 +208,7 @@ newcomers will need good resources.
 One well-respected site is
 https://developer.mozilla.org/en/JavaScript.
 Beware of doing a search engine query and ending up at w3schools,
-which is not so well respected these days. 
+which is not so well respected these days.
 If you are at Virginia Tech (or if your school supports this), a
 wonderful source of documentation is the Safari database
 (http://proquest.safaribooksonline.com/?uicode=viva), which contains a
@@ -413,11 +247,11 @@ can be used.
   * Print statments for debugging and error logging.
 
   * Testing JavaScript statements (including access to variables and
-    functions defined on the current page). 
+    functions defined on the current page).
 
   * Viewing network requests - GET and POST messages appear in the
     console allowing the user to see what data was sent and the server's
-    response. 
+    response.
 
 * Inspect - allows the user to select an element on a page, view the
   HTML for it and modify the element's CSS in real time (helpful for
@@ -427,16 +261,94 @@ can be used.
   or simply following code execution).
 
 
---------------------------------
-Setting up a Testing Environment
---------------------------------
+------------------------------------------
+Setting up a Local Development Environment
+------------------------------------------
 
-To compile your own books for testing purposes requires rather a lot
-of infrastruture.
-It also involves running multiple servers: at least one for the LTI
-provider and one for the OpenDSA scoring server.
+There are two ways to set up your system to do local development on
+OpenDSA content: set up in a virtual box, or install the toolchain
+manually.
+
+
+Using a Virtual Box
+~~~~~~~~~~~~~~~~~~~
+
+If all that you want to do is compile OpenDSA content, then you could
+set up the toolchain manually (see the next section), or use the
+virtual box to set everything up automatically.
+If you plan to do more, including running the OpenDSA or Code
+Workout back-end servers, then the only practical approach is to
+install the OpenDSA DevStack in a virutal box.
 To make this relatively easy for most developers, we have created a
 package to deliver a complete "OpenDSA in a box" on a virtual
 machine.
 Complete instructions can be found at:
 https://github.com/OpenDSA/OpenDSA-DevStack.
+
+
+Installing the Toolchain Manually
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Here are instructions for installing the toolchain manually,
+which should then allow you to compile OpenDSA books.
+These instructions are geared toward Windows, since that is the
+hardest to install.
+For Linux or Mac, you can do pretty much the same thing (using sudo
+for root permissions, and getting the tools from your package
+manager),
+but can skip some of the steps.
+
+First, install Git.
+On Windows, a good choice is  "Git for Windows" at
+https://git-scm.com/download/win.
+Use the third option for the path environment:
+"Use Git and optional Unix tools from the Windows Command Prompt".
+Choose "checkout as-is, commit Unix-style line endings",
+and then use "MinTTY".
+
+Then on Windows you will need to install "make"
+from http://gnuwin32.sourceforge.net/packages/make.htm.
+IMPORTANT: Put it in Program Files, NOT Program Files (x86).
+Then,edit your environment variable PATH to add:
+C:/Program Files/GnuWin32/bin
+
+Next, install nodejs (on Windows, you can get it from
+https://nodejs.org/en/download/).
+
+Now, open a Git Bash window and do::
+
+   npm install -g eslint  [If this is a fresh install of nodejs, this could take awhile]
+   npm install -g csslint
+   npm install -g jsonlint
+   npm install -g uglify-js
+
+Next, install Python 2.7.
+Be sure to add it to your PATH variable.
+For example, if you choose to put it at the top level of your C:
+drive, then add C:/Python27 and C:/Python27/Scripts to your PATH.
+Note: If you already have Python 2.7 installed, but it does not have
+pip, then it is so obsolete that it needs to be thrown away and
+replaced.
+
+Finally pop open a **new** Git Bash window, and clone the OpenDSA
+repo from https://github.com/OpenDSA/OpenDSA.
+
+Then do the following::
+
+   cd OpenDSA
+   pip install -r requirements.txt
+   make pull [This could take awhile]
+
+At this point, you should be all set up. To test things, you can try
+doing::
+
+  make test
+
+This should put a test book into [OpenDSA]/Books/test.
+
+Note that to see most OpenDSA content, it must be viewed through a web
+server.
+Since you probably don't want to install a real web server like Apache
+on your local machine, there is a simple alternative.
+See [OpenDSA]/WebServer for easy instructions on starting up a web
+server to view your OpenDSA content.

@@ -180,6 +180,7 @@ def update_TermDef(glossary_file, terms_dict):
 
 triple_up = re.compile(r'^\.\.[\/\\]\.\.[\/\\]\.\.[\/\\]')
 def break_up_sections(path, module_data, config):
+  print(path)
   book_name = config.book_name
   sections = module_data['sections']
   module_map = config['module_map']
@@ -213,7 +214,7 @@ def break_up_sections(path, module_data, config):
   # KILL MATHJAX
   #'''Helpful for debugging, because MathJax takes forever to load'''
   #for possible_math_jax in soup.find_all('script'):
-  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdn.mathjax.org/mathjax'):
+  #  if possible_math_jax.has_attr('src') and possible_math_jax['src'].startswith('//cdnjs.cloudflare.com/ajax/libs/mathjax'):
   #    possible_math_jax.extract()
 
 
@@ -227,7 +228,6 @@ def break_up_sections(path, module_data, config):
           a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
         elif a_tag[tag_url].startswith('_images/'):
           a_tag[tag_url] = '/OpenDSA/Books/'+book_name+'/html/'+a_tag[tag_url]
-
 
   '''
   Skip any sections that don't have points

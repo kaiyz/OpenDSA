@@ -41,6 +41,7 @@ unwinds.
 Sometimes people forget about the "unwinding" phase.
 
 .. inlineav:: recurTraceWindCON ss
+   :long_name: Recursion Tracing Winding and Unwinding
    :output: show 
 
 
@@ -53,6 +54,7 @@ has information flowing forward during the winding phase, and backward
 during the unwinding phase.
 
 .. inlineav:: recurTraceFactCON ss
+   :long_name: Recursion Tracing Factorial Function
    :output: show 
 
 The recursive function may have information flow for more than one parameter. For example, a recursive
@@ -61,6 +63,7 @@ and the index through the recursive call in the winding phase and returns back t
 in the unwinding phase.
 
 .. inlineav:: recurTraceSumCON ss
+   :long_name: Recursion Tracing Sum Function
    :output: show
 
 
@@ -68,6 +71,7 @@ A Domino Analogy
 ~~~~~~~~~~~~~~~~
 
 .. inlineav:: recurTraceDmnCON ss
+   :long_name: Recursion Tracing General Domino Effect
    :output: show 
 
 This recursive model for the domino effect can be used as a template
@@ -100,7 +104,7 @@ the disks, the world will end.
    :output: show 
 
 The Towers of Hanoi puzzle begins with three poles and :math:`n`
-rings, where all rings start on the leftmost pole (labeled Pole 1).
+rings, where all rings start on the leftmost pole (labeled Pole A).
 The rings each have a different size, and are stacked in order of
 decreasing size with the largest ring at the bottom, as shown in
 part (a) of the figure.
@@ -155,6 +159,7 @@ ring-moving instructions that solves the problem.
 This next slideshow explains the solution to the Towers of Hanoi problem.
 
 .. inlineav:: recurTraceTOHCON ss
+   :long_name: Recursion Tracing Towers of Hanoi
    :output: show 
 
 .. odsascript:: AV/RecurTutor/recurTraceWindCON.js
