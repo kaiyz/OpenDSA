@@ -4,6 +4,7 @@
 //document.write('<script src="../../../AV/FLA/resources/underscore-min.js"></script>');
 //document.write('<script src="../../../AV/FLA/resources/Commands.js"></script>');
 document.write('<script src="../../../AV/FLA/summer2017/fa/FA.js"></script>');
+//document.write('<script src="../../../DataStructures/PIFrames.js"></script>')
 //document.write('<script src="../../../AV/FLA/summer2017/fa/TuringMachine.js"></script>');
 //document.write('<script src="./CustomPrompt.js"></script>');
 //document.write('<script src="../../../AV/FLA/summer2017/fa/Commands.js"></script>');
@@ -21,6 +22,12 @@ $(document).ready(function() {
   var config = ODSA.UTILS.loadConfig({av_name: av_name}),
       interpret = config.interpreter, // get the interpreter
       code = config.code;             // get the code object
+
+ //load PIFRAMES
+ var injector = PIFRAMES.getQuestions(av_name)
+
+
+
   var FA = new av.ds.fa($.extend({width: '450px', height: 340, editable: true, left: 0}));
     var DFA = new av.ds.fa($.extend({width: '550px', height: 340, editable: true, left: 400}));
   var separator = av.g.path(["M", 400, 0, "v", 500].join(","));
@@ -50,13 +57,19 @@ $(document).ready(function() {
   av.displayInit();
 
   // Slide 2
-  av.umsg("Let's begin with the start state. Closure($q_0$) in $M_N$ is {$q_0,q_1,q_2$}. So this is the start state.");
+  av.umsg("Let's begin with the start state.")
+  av.step();
+  av.umsg(injector.injectQuestion("q1"));
+  av.step();
+  av.umsg("Closure($q_0$) in $M_N$ is {$q_0,q_1,q_2$}. So this is the start state.");
     q0.highlight();
     q1.highlight();
     q2.highlight();
     var dfaQ0 = DFA.newNode("{q0,q1,q2}",{left: 50, top: 150});
     toggleInitial(DFA, dfaQ0);
   av.step();
+
+
   // Slide 3
   av.umsg("Now, we should determine the the possible transitions from out new start state. To do so, we need to check the transitions from {$q_0,q_1,q_2$} with $a$ and $b$ ");
     q0.unhighlight();
@@ -107,7 +120,7 @@ $(document).ready(function() {
     DFA.addEdge(q5_q1, DFA_q3, {weight: "a"});
     av.step();
 
-    av.umsg("Finall, we need to determine the final states. Any state that include $q_5$ of $q_6$ will be final state.");
+    av.umsg("Finally, we need to determine the final states. Any state that include $q_5$ of $q_6$ will be final state.");
     toggleFinal(DFA, q1_q5_q6);
     toggleFinal(DFA, q5_q1);
     toggleFinal(DFA, DFA_q6);
