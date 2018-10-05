@@ -59,6 +59,8 @@ $(document).ready(function() {
   // Slide 2
   av.umsg("Let's begin with the start state.")
   av.step();
+
+  //need to fix formatting issue. Working on dynamic resizing of <div>
   av.umsg(injector.injectQuestion("q1"));
   av.step();
   av.umsg("Closure($q_0$) in $M_N$ is {$q_0,q_1,q_2$}. So this is the start state.");
