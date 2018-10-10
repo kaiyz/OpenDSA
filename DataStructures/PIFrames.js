@@ -3,7 +3,7 @@
 
 
 $(document).ready(function() {
-  console.log("PIFRAMES HAS BEEN CALLED")
+
 
 //testing to see if listener sees the forward button
 if ( $(".jsavforward").length ) {
@@ -28,19 +28,48 @@ var PIFrames = {
             myData: data,
 
             //if there are multiple frames on one page, we need a reference to the correct one
-            binding: av_name,
+            av_name: av_name,
 
             //the injection point on canvas
-            class: 'p.jsavoutput jsavline',
+            class: "PIFRAMES",
+
+            //may use this format if we decide to create a custom version of av.umsg()
+            revealQuestionButton: $('<button />', {"class": 'RevealButton',
+                                                   "text": 'Show Question'
+                                                  }),
+
+            disableForwardButton: function() {
+            var forwardButton = $(`#${this.av_name}`).find("span.jsavforward");
+            $(forwardButton).unbind("click");
+
+            },
+
+            alertMessage: function() {
+                var button = `<button type="button" onclick="PIFRAMES.disableForwardButton()" class="RevealButton">Show Question</button>`;
+                var message = '<p>You must answer the question to proceed forward. Click Show Question</p>';
+                this.disableForwardButton();
+                return (message+button)
+            },
 
             getQuestion: function(id) {
                 var key = this.myData.translations.en;
                 var question = key[id];
                 return question;
             },
+
             injectQuestion: function(id) {
+
                 var question = this.getQuestion(id);
                 var theHtml = this.buildElement(question);
+
+                if($(`.${this.class}`).children().length > 0) {
+                    $(`.${this.class}`).empty();
+                    $(`.${this.class}`).append(theHtml);
+                } else {
+                    $(`.${this.class}`).append(theHtml);
+                }
+
+
                 return theHtml;
             },
 
@@ -89,7 +118,27 @@ var PIFrames = {
         });
 
         return this.Injector(json_data, av_name);
-    }
+    },
+
+    //add div to the av_name's jsavcanvas, so that dynamic questions have a hooking point
+    init(av_name) {
+        var canvas = $(`#${av_name}`).children("div.jsavcanvas");
+        var svg = $(canvas).children().first();
+        var div = $('<div />', {"class": 'PIFRAMES'});
+        $(div).css({"position": "absolute", "height": "100%", "display": "none"});
+        $(canvas).append(div)
+        return this.getQuestions(av_name);
+    },
+
+    //not sure exactly where this belongs, so keeping two version for now
+    disableForwardButton: function() {
+            console.log("clicked!!!")
+            var forwardButton = $("#NFAtoDFACON").find(".jsavforward");
+            console.log($(forwardButton).get(0).tagName)
+            $(forwardButton).unbind("click")
+
+            },
+
 }
 
 window.PIFRAMES = PIFrames;
