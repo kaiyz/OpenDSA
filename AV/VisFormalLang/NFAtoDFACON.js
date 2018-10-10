@@ -23,15 +23,15 @@ $(document).ready(function() {
       interpret = config.interpreter, // get the interpreter
       code = config.code;             // get the code object
 
- //load PIFRAMES
- var injector = PIFRAMES.getQuestions(av_name)
-
-
-
   var FA = new av.ds.fa($.extend({width: '450px', height: 340, editable: true, left: 0}));
     var DFA = new av.ds.fa($.extend({width: '550px', height: 340, editable: true, left: 400}));
   var separator = av.g.path(["M", 400, 0, "v", 500].join(","));
   separator.show();
+
+  //load PIFRAMES. Must be done after the jsavcanvas is ready
+ var injector = PIFRAMES.init(av_name)
+
+
   // Slide 1
   av.umsg("Consider the following NFA, we need to convert it to the equivalent DFA");
     var q0 = FA.addNode({left: 50, top: 150});
@@ -59,10 +59,11 @@ $(document).ready(function() {
   // Slide 2
   av.umsg("Let's begin with the start state.")
   av.step();
-
+//  av.umsg(injector.alertMessage())
   //need to fix formatting issue. Working on dynamic resizing of <div>
-  av.umsg(injector.injectQuestion("q1"));
+//injector.injectQuestion("q1");
   av.step();
+  injector.injectQuestion("q2");
   av.umsg("Closure($q_0$) in $M_N$ is {$q_0,q_1,q_2$}. So this is the start state.");
     q0.highlight();
     q1.highlight();
@@ -90,15 +91,16 @@ $(document).ready(function() {
     var DFA_q4 = DFA.newNode("{q4}", {left:150, top: 250});
     DFA.addEdge(q3_q4, q1_q5_q6, {weight: "b"});
     DFA.addEdge(q3_q4, DFA_q4, {weight: "a"});
-  av.step();
+    av.step();
+
   // Slide 5
   av.umsg("Find transition for {$q_1,q_5, q_6$} with $a$ and $b$");
     q3_q4.unhighlight();
     q1_q5_q6.highlight();
     var DFA_q3 = DFA.newNode("{q3}", {left:450, top: 50});
     DFA.addEdge(q1_q5_q6, DFA_q3, {weight: "a"});
-
     av.step();
+
     // Slide 6
     av.umsg("Find transition for {q3} with $a$ and $b$");
     DFA_q3.highlight();
