@@ -1,4 +1,3 @@
-
 (function($) {
 
 
@@ -13,6 +12,14 @@ if ( $(".jsavforward").length ) {
 //testing to see if listener is working
 $(".jsavforward").click(function() {
     console.log("jsav forward clicked")
+
+    //build a datastructure of questions using the NFAtoDFACON.js file
+    //this datastructure will give the order of the questions
+    //then, use the click() function to check whether the "Reveal Questions" button exists
+    //if it exists, disable the next and fast-forward buttons
+    //pop the first element from the datastructure
+    //insert it into PIFRAMES class, then reveal if button is clicked
+    //attach click listener to button
 });
 
 
